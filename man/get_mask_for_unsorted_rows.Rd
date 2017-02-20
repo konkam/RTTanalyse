@@ -11,6 +11,8 @@ get_mask_for_unsorted_rows(raw_wide_dataset, time_col_names, time_stamps)
 
 \item{time_col_names}{The name of the column containing number of animals alive at for a specific time.}
 
+\item{time_stamps}{The dates at which the number of animals alive is measured, in the same order as time_col_names}
+
 \item{concentration_col_name}{The name of the column containing the concentrations.}
 }
 \value{

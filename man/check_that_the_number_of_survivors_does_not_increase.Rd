@@ -11,6 +11,8 @@ check_that_the_number_of_survivors_does_not_increase(raw_wide_dataset,
 \item{raw_wide_dataset}{The loaded dataset.}
 
 \item{time_col_names}{The name of the column containing number of animals alive at for a specific time.}
+
+\item{time_stamps}{The dates at which the number of animals alive is measured, in the same order as time_col_names}
 }
 \value{
 \code{TRUE} if the number of survivors does not increase, else \code{FALSE}
