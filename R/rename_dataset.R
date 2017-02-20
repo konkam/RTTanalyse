@@ -1,7 +1,5 @@
 #' Specify which are the interesting column of a dataset and rename them for standardized use.
 #'
-#' The argument \code{keep_only} is intended to make the function more versatile.
-#'
 #' @param dataset The loaded dataset. Must contain only one contaminant.
 #' @param concentration_col_name The name of the column containing the concentrations.
 #' @param time_col_name The name of the column containing the time stamps.
