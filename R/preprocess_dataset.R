@@ -147,7 +147,7 @@ convert_to_long_dataset = function(raw_wide_dataset, concentration_col, species_
     subset(!is.na(number_alive))
 }
 
-
+#' @export
 preprocess_dataset = function(raw_wide_dataset, concentration_col, species_col, time_col_names, time_stamps){
   raw_wide_dataset %>%
     convert_to_long_dataset(concentration_col = concentration_col, species_col = species_col, time_col_names = time_cols, time_stamps = time_stamps) %>%

@@ -1,3 +1,5 @@
+#' @export
+#'
 prepare_dat = function(preprocessed_dataset){
   preprocessed_dataset %>%
     (function(df){

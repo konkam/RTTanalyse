@@ -2,7 +2,8 @@
 #'
 #' @inheritParams get_mask_for_unsorted_rows
 #' @return \code{TRUE} if the number of survivors does not increase, else \code{FALSE}
-check_that_the_number_of_survivors_does_not_increase = function(raw_wide_dataset, time_col_names, time_stamps){
+#' @export
+check_that_the_number_of_survivors_does_not_increase <- function(raw_wide_dataset, time_col_names, time_stamps){
 
   !any(get_mask_for_unsorted_rows(raw_wide_dataset, time_col_names, time_stamps)) %>%
     return

@@ -55,11 +55,8 @@ model {
     ke[i]=pow(10.,lke[i]);
   }
 
-
-
   for (i in 1:ndat)
   {
-
     psurv[i] = exp(- m0[species[i]] * (t[i]-tprec[i]) );
 
     if (x[i]>NEC[species[i]]){
@@ -70,8 +67,7 @@ model {
         psurv[i] = psurv[i]* exp(- ks[species[i]]*( (x[i]-NEC[species[i]]) * (t[i]-tref[i]) + 1/ke[species[i]] * x[i] * ( exp(-ke[species[i]]*t[i])-exp(-ke[species[i]]*tref[i])) ));
       }
     }
-    psurv[i] = fmax(psurv[i],pow(10.,-6.));######this is to make initialization easier
-
+    // psurv[i] = fmax(psurv[i],pow(10.,-6.));######this is to make initialization easier
   }
 
 
