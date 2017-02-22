@@ -121,6 +121,7 @@ convert_concentrations_to_numbers = function(df, col_conc){
 preprocess_long_dataset = function(long_dataset){
   long_dataset %>%
     convert_concentrations_to_numbers(col_conc = "concentration") %>%
+    mutate(number_alive = as.numeric(number_alive)) %>%
     subset(!is.na(number_alive)) %>%
     add_prec_time_and_number %>%
     compute_effective_number_of_individuals %>%
@@ -137,7 +138,7 @@ make_time_col_name_time_stamp_converter = function(time_col_names, time_stamps){
 
 convert_to_long_dataset = function(raw_wide_dataset, concentration_col, species_col, time_col_names, time_stamps){
 
-  time_col_name_time_stamp_converter = make_time_col_name_time_stamp_converter(time_col_names = time_cols, time_stamps = time_stamps)
+  time_col_name_time_stamp_converter = make_time_col_name_time_stamp_converter(time_col_names = time_col_names, time_stamps = time_stamps)
 
   raw_wide_dataset %>%
     convert_concentrations_to_numbers(col_conc = concentration_col) %>%
@@ -150,6 +151,6 @@ convert_to_long_dataset = function(raw_wide_dataset, concentration_col, species_
 #' @export
 preprocess_dataset = function(raw_wide_dataset, concentration_col, species_col, time_col_names, time_stamps){
   raw_wide_dataset %>%
-    convert_to_long_dataset(concentration_col = concentration_col, species_col = species_col, time_col_names = time_cols, time_stamps = time_stamps) %>%
+    convert_to_long_dataset(concentration_col = concentration_col, species_col = species_col, time_col_names = time_col_names, time_stamps = time_stamps) %>%
     preprocess_long_dataset
 }
