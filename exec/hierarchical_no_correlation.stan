@@ -1,5 +1,7 @@
 ##########################in this model, mostly all the stochastic links have been vectorised.
 ###############deterministic links does not make much difference when vectorised.
+############## The normal distribution for the lower level of the hierarchy are specified using the non-centered parameterisation, see Stan Manual.
+############# The half-Cauchy distributions are also re-parameterised, see Stan Manual.
 data {
   int<lower=0> ndat; // Number of data points
   int<lower=0> nspecies; // Number of species
@@ -14,24 +16,42 @@ data {
 }
 
 parameters {
-  real<lower=-7,upper=2> lks_mu;
+  real<lower=-7,upper=0> lks_mu;
   real<lower=log(minc)/log(10)-1,upper=log(maxc)/log(10)+1> lNEC_mu;
-  real<lower=-7,upper=2> lke_mu;
-  real<lower = -7, upper = 2> lm0_mu;
-# real<lower = 0, upper = 2> lks_sigma;
-# real<lower = 0, upper = 2> lNEC_sigma;
-# real<lower = 0, upper = 2> lke_sigma;
-# real<lower = 0, upper = 2> lm0_sigma;
-  real<lower = 0> lks_sigma;
-  real<lower = 0> lNEC_sigma;
-  real<lower = 0> lke_sigma;
-  real<lower = 0> lm0_sigma;
+  real<lower=-7,upper=0> lke_mu;
+  real<lower = -7, upper = -1> lm0_mu;
+  real<lower = 0, upper = pi()/2> lks_sigma_unif;
+  real<lower = 0, upper = pi()/2> lNEC_sigma_unif;
+  real<lower = 0, upper = pi()/2> lke_sigma_unif;
+  real<lower = 0, upper = pi()/2> lm0_sigma_unif;
+  vector[nspecies] lm0_raw;
+  vector[nspecies] lks_raw;
+  vector[nspecies] lNEC_raw;
+  vector[nspecies] lke_raw;
+}
+
+transformed parameters {
+  real lks_sigma;
+  real lNEC_sigma;
+  real lke_sigma;
+  real lm0_sigma;
+
   vector[nspecies] lm0;
   vector[nspecies] lks;
   vector[nspecies] lNEC;
   vector[nspecies] lke;
-}
 
+  lks_sigma = 0.5 * tan(lks_sigma_unif); // lks_sigma ~ half-Cauchy(0,0.5)
+  lNEC_sigma = 0.5 * tan(lNEC_sigma_unif);
+  lke_sigma = 0.5 * tan(lke_sigma_unif);
+  lm0_sigma = 0.5 * tan(lm0_sigma_unif);
+
+  lm0 = lm0_mu + lm0_sigma * lm0_raw;
+  lks = lks_mu + lks_sigma * lks_raw;
+  lNEC = lNEC_mu + lNEC_sigma * lNEC_raw;
+  lke = lke_mu + lke_sigma * lke_raw;
+
+}
 
 model {
   vector[nspecies] ks;
@@ -42,13 +62,8 @@ model {
   vector[ndat] tNEC;
   vector[ndat] tref;
 
-  lke_sigma ~ cauchy(0,2.5); // half-Cauchy due to constraint to be positive
-  lks_sigma ~ cauchy(0,2.5);
-  lm0_sigma ~ cauchy(0,2.5);
-  lNEC_sigma ~ cauchy(0,2.5);
-
   for (i in 1:nspecies){
-###############there is no vectorised version of the power function in STAN
+  ###############there is no vectorised version of the power function in STAN at the moment
     m0[i]=pow(10.,lm0[i]);
     ks[i]=pow(10.,lks[i]);
     NEC[i]=pow(10.,lNEC[i]);
@@ -57,24 +72,26 @@ model {
 
   for (i in 1:ndat)
   {
+
     psurv[i] = exp(- m0[species[i]] * (t[i]-tprec[i]) );
 
     if (x[i]>NEC[species[i]]){
-      tNEC[i] = -1/ke[species[i]]*log(1-NEC[species[i]]/x[i]);
+        tNEC[i] = -1/ke[species[i]] * log(1-NEC[species[i]]/x[i]);
 
       if (t[i]>tNEC[i]){
         tref[i] = fmax(tprec[i],tNEC[i]);
         psurv[i] = psurv[i]* exp(- ks[species[i]]*( (x[i]-NEC[species[i]]) * (t[i]-tref[i]) + 1/ke[species[i]] * x[i] * ( exp(-ke[species[i]]*t[i])-exp(-ke[species[i]]*tref[i])) ));
       }
     }
-    // psurv[i] = fmax(psurv[i],pow(10.,-6.));######this is to make initialization easier
+          // psurv[i] = fmax(psurv[i],pow(10.,-6.));######this is to make initialization easier
+
   }
 
 
-  lks ~ normal(lks_mu, lks_sigma);
-  lNEC ~ normal(lNEC_mu, lNEC_sigma);
-  lke ~ normal(lke_mu, lke_sigma);
-  lm0 ~ normal(lm0_mu, lm0_sigma);
+  lks_raw ~ normal(0, 1);
+  lNEC_raw ~ normal(0, 1);
+  lke_raw ~ normal(0, 1);
+  lm0_raw ~ normal(0, 1);
 
   y ~ binomial(Nprec,psurv);
 }
