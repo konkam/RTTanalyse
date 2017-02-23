@@ -1,5 +1,5 @@
 #' @export
-plot_raw_data <- function(renamed_dataset){
+plot_raw_data <- function(renamed_dataset, vs = "t"){
 
   renamed_dataset <- renamed_dataset %>%
     assert_dataset_format() %>%
@@ -7,37 +7,60 @@ plot_raw_data <- function(renamed_dataset){
 
   tid <- "test_id" %in% names(renamed_dataset)
 
-  if (tid){
-    p <- renamed_dataset %>%
-      ggplot(aes(x = time,
-                 y = number_alive,
-                 colour = concentration,
-                 group = interaction(concentration, test_id)))
+
+  if (vs == "t"){
+
+    if (tid){
+      p <- renamed_dataset %>%
+        ggplot(aes(x = time,
+                   y = number_alive,
+                   colour = concentration,
+                   group = interaction(concentration, test_id)))
+    }
+    else{
+      p <- renamed_dataset %>%
+        ggplot(aes(x = time,
+                   y = number_alive,
+                   colour = concentration,
+                   group = concentration))
+    }
+
+    p = p +
+      xlab("Time") +
+      geom_line() +
+      scale_color_continuous(name = "Concentration")
   }
+
   else{
-    p <- renamed_dataset %>%
-      ggplot(aes(x = time,
-                 y = number_alive,
-                 colour = concentration,
-                 group = concentration))
+
+      p <- renamed_dataset %>%
+        ggplot(aes(x = concentration,
+                   y = number_alive,
+                   colour = time %>% factor(),
+                   group = time %>% factor()))
+    p = p +
+      xlab("Concentration") +
+      ggthemes::scale_color_ptol(name = "Time")
+
+    if (min(renamed_dataset$concentration) > 0){
+      p = p + scale_x_log10()
+    }
+    #+
+      # scale_x_log10()
   }
 
   p +
-    geom_line() +
     facet_wrap(~ species, scales = "free") +
     geom_point() +
     scale_y_continuous(breaks= scales::pretty_breaks(), limits = c(0, NA)) +
     # scale_y_continuous(limits = c(0, NA), labels = function (x) floor(x)) +
     ggthemes::theme_few() +
-    ylab("Number alive") +
-    xlab("Time") +
-    scale_color_continuous(name = "Concentration")%>% # +
-    # ggthemes::scale_colour_ptol() %>%
-    return
+    ylab("Number alive")
+
 }
 
 #' @export
-plot_raw_dataset = function(raw_wide_dataset, concentration_col, species_col, time_col_names, time_stamps){
+plot_raw_dataset = function(raw_wide_dataset, concentration_col, species_col, time_col_names, time_stamps, vs = "t"){
 
   raw_wide_dataset %>%
     convert_concentrations_to_numbers(col_conc = concentration_col) %>%
@@ -45,7 +68,7 @@ plot_raw_dataset = function(raw_wide_dataset, concentration_col, species_col, ti
     setNames(c('concentration', 'species', time_stamps) %>% as.character()) %>%
     mutate(test_id = seq_along(concentration)) %>%
     gather(key = time, value = number_alive, -concentration, -species, -test_id) %>%
-    plot_raw_data()
+    plot_raw_data(vs = vs)
 
 }
 
@@ -125,8 +148,90 @@ plot_NEC_with_prepared_dataset = function(fit, prepared_dataset){
         geom_point(aes(x = 10**l_est), colour = 'red') +
         scale_x_log10() +
         ylab('') +
-        xlab('NEC') +
+        xlab('No Effect Concentration') +
         ggthemes::theme_few()
       })
 
+}
+
+#' @export
+plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_data_hierarchical()){
+
+  colmedians = function(x){
+    if(is.null(dim(x))|length(dim(x))==1) median(x)
+    else apply(X = x, MARGIN = 2, FUN = median)
+  }
+
+  fill_along = function(x, npoints = 100, log_ = F){
+    if(log_) 10**seq(from = min(x) %>% log10, to = max(x) %>% log10, length.out = npoints)
+    else seq(from = min(x), to = max(x), length.out = npoints)
+  }
+
+
+
+  mcmctot = fit %>%
+    extract
+  m0__ = mcmctot %>%
+    lapply(FUN = colmedians) %>%
+    .$lm0 %>%
+    10**.
+
+  if(vs=='c'){
+    mcmctot %>%
+      lapply(colmedians) %>%
+      (function(y){
+        data_for_fit$species %>%
+          unique %>%
+          lapply(FUN = function(xx){
+            filter = data_for_fit$species==xx
+            format_res(x = data_for_fit$x[filter] %>% fill_along(log_ = F), ks = 10**y$lks[xx], NEC = 10**y$lNEC[xx], ke = 10**y$lke[xx], m0_ = m0__[xx], t = data_for_fit$t[filter] %>% unique) %>%
+              mutate(species = data_for_fit$converter(xx))
+          })
+      }) %>%
+      Reduce(rbind,.) %>%
+      ggplot(aes(x = x, y = psurv, colour = t, group = t)) +
+      geom_line() +
+      facet_wrap(~species, scales = 'free_x') +
+      geom_point(data = data.frame(data_for_fit[c('x','y','Neff','t', 'species')]) %>% mutate(species = data_for_fit$converter(species)), mapping = aes(x = x, y = y/Neff)) +
+      scale_color_continuous(low = 'darkgreen', high = 'yellow') +
+      #               scale_color_discrete() +
+      # scale_x_log10()+
+      xlab('Concentration') +
+      ylab("Survival probability") +
+      ggthemes::theme_few() +
+      scale_x_log10()
+  }
+
+  else if(vs=='t'){
+    mcmctot %>%
+      lapply(colmedians) %>%
+      (function(y){
+        data_for_fit$species %>%
+          unique %>%
+          lapply(FUN = function(xx){
+            filter = data_for_fit$species==xx
+            format_res(x = data_for_fit$x[filter] %>%
+                         unique,
+                       ks = 10**y$lks[xx],
+                       NEC = 10**y$lNEC[xx],
+                       ke = 10**y$lke[xx],
+                       m0_ = m0__[xx],
+                       t = data_for_fit$t[filter] %>%
+                         fill_along(log_ = F, npoints = 300) %>%
+                         c(0)) %>%
+              mutate(species = data_for_fit$converter(xx))
+          })
+      }) %>%
+      Reduce(rbind,.) %>%
+      ggplot(aes(x = t, y = psurv, colour = x, group = x)) +
+      geom_line() +
+      geom_point(data = data.frame(data_for_fit[c('x','y','Neff','t', 'species')]) %>%
+                   mutate(species = data_for_fit$converter(species)),
+                 mapping = aes(y = y/Neff)) +
+      # scale_color_continuous(low = 'blue', high = 'red', trans = 'log10') +
+      facet_wrap(~species, scales = 'free_x') +
+      xlab('Time') +
+      ylab("Survival probability") +
+      ggthemes::theme_few()
+    }
 }
