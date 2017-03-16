@@ -82,16 +82,18 @@ prior_posterior_plot_with_prepared_dataset = function(fit, prepared_dataset){
 
   priors = list(
     tibble(grid_ = seq(-8,4,length.out = 100)) %>%
-      mutate(lks_mu = dunif(grid_,-7,2)) %>%
+      mutate(lks_mu = dunif(grid_,-7,0)) %>%
       mutate(lke_mu = lks_mu) %>%
-      mutate(lm0_mu = lks_mu) %>%
-      gather(param, value, lks_mu:lm0_mu),
+      gather(param, value, -grid_),
+    tibble(grid_ = seq(-8,4,length.out = 100)) %>%
+      mutate(lm0_mu = dunif(grid_,-7,-1)) %>%
+      gather(param, value, -grid_),
     tibble(grid_ = seq(-1,10, length.out = 100)) %>%
-      mutate(lks_sigma = dhalf_Cauchy(grid_,0,2.5)) %>%
+      mutate(lks_sigma = dhalf_Cauchy(grid_,0,0.5)) %>%
       mutate(lke_sigma = lks_sigma) %>%
       mutate(lm0_sigma = lks_sigma) %>%
       mutate(lNEC_sigma = lks_sigma) %>%
-      gather(param, value, lks_sigma:lNEC_sigma),
+      gather(param, value, -grid_),
     tibble(grid_ = seq(log10(prepared_dataset$minc)-2,log10(prepared_dataset$maxc)+2, length.out = 100)) %>%
       mutate(value = dunif(grid_,log10(prepared_dataset$minc)-1,log10(prepared_dataset$maxc)+1),
              param = 'lNEC_mu')
@@ -146,7 +148,7 @@ plot_NEC_with_prepared_dataset = function(fit, prepared_dataset){
         ggplot(aes(x = 10**y0, xend = 10**y1, y = factor(species), yend = factor(species))) +
         geom_segment(lineend = 'square', size  = 2) +
         geom_point(aes(x = 10**l_est), colour = 'red') +
-        scale_x_log10() +
+        # scale_x_log10() +
         ylab('') +
         xlab('No Effect Concentration') +
         ggthemes::theme_few()
@@ -177,14 +179,22 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
     10**.
 
   if(vs=='c'){
-    mcmctot %>%
+
+    if (min(data_for_fit$x) > 0){
+      log_conc = T
+    }
+    else{
+      log_conc = F
+    }
+
+    p = mcmctot %>%
       lapply(colmedians) %>%
       (function(y){
         data_for_fit$species %>%
           unique %>%
           lapply(FUN = function(xx){
             filter = data_for_fit$species==xx
-            format_res(x = data_for_fit$x[filter] %>% fill_along(log_ = F), ks = 10**y$lks[xx], NEC = 10**y$lNEC[xx], ke = 10**y$lke[xx], m0_ = m0__[xx], t = data_for_fit$t[filter] %>% unique) %>%
+            format_res(x = data_for_fit$x[filter] %>% fill_along(log_ = log_conc, npoints = 200), ks = 10**y$lks[xx], NEC = 10**y$lNEC[xx], ke = 10**y$lke[xx], m0_ = m0__[xx], t = data_for_fit$t[filter] %>% unique) %>%
               mutate(species = data_for_fit$converter(xx))
           })
       }) %>%
@@ -193,13 +203,18 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
       geom_line() +
       facet_wrap(~species, scales = 'free_x') +
       geom_point(data = data.frame(data_for_fit[c('x','y','Neff','t', 'species')]) %>% mutate(species = data_for_fit$converter(species)), mapping = aes(x = x, y = y/Neff)) +
-      scale_color_continuous(low = 'darkgreen', high = 'yellow') +
+      scale_color_continuous(low = 'darkgreen', high = 'yellow', name = "Time") +
       #               scale_color_discrete() +
       # scale_x_log10()+
       xlab('Concentration') +
       ylab("Survival probability") +
-      ggthemes::theme_few() +
-      scale_x_log10()
+      ggthemes::theme_few()
+
+    if (min(data_for_fit$x) > 0){
+      p = p + scale_x_log10()
+    }
+
+    return(p)
   }
 
   else if(vs=='t'){
@@ -217,8 +232,8 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
                        ke = 10**y$lke[xx],
                        m0_ = m0__[xx],
                        t = data_for_fit$t[filter] %>%
-                         fill_along(log_ = F, npoints = 300) %>%
-                         c(0)) %>%
+                         c(0) %>%
+                         fill_along(log_ = F, npoints = 300) ) %>%
               mutate(species = data_for_fit$converter(xx))
           })
       }) %>%
@@ -229,9 +244,62 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
                    mutate(species = data_for_fit$converter(species)),
                  mapping = aes(y = y/Neff)) +
       # scale_color_continuous(low = 'blue', high = 'red', trans = 'log10') +
+      scale_color_continuous(name = "Concentration") +
       facet_wrap(~species, scales = 'free_x') +
       xlab('Time') +
       ylab("Survival probability") +
       ggthemes::theme_few()
     }
+}
+
+plot_the_fit_one_species = function(fit, vs = 'c', data_for_fit){
+  median_params = fit %>%
+    extract(parameters_names %>% paste("l",.,sep="")) %>%
+    as_tibble() %>%
+    colmedians()
+
+  if(vs=='c'){
+
+    if (min(data_for_fit$x) > 0){
+      log_conc = T
+    }
+    else{
+      log_conc = F
+    }
+    p = format_res(x = data_for_fit$x %>% fill_along(log_ = log_conc, npoints = 200), ks = 10**median_params["lks"], NEC = 10**median_params["lNEC"], ke = 10**median_params["lke"], m0_ = 10**median_params["lm0"], t = data_for_fit$t %>% unique) %>%
+      ggplot(aes(x = x, y = psurv, colour = t, group = t)) +
+      geom_line() +
+      geom_point(data = data.frame(data_for_fit[c('x','y','Neff','t', 'species')]), mapping = aes(x = x, y = y/Neff)) +
+      scale_color_continuous(low = 'darkgreen', high = 'yellow', name = "Time") +
+      xlab('Concentration') +
+      ylab("Survival probability") +
+      ggthemes::theme_few()
+    if (min(data_for_fit$x) > 0){
+      p = p + scale_x_log10()
+    }
+
+    return(p)
+  }
+
+  else if(vs=='t'){
+    format_res(x = data_for_fit$x %>% unique(),
+               ks = 10**median_params["lks"],
+               NEC = 10**median_params["lNEC"],
+               ke = 10**median_params["lke"],
+               m0_ = 10**median_params["lm0"],
+               t = data_for_fit$t %>%
+                 c(0)%>%
+                 fill_along(log_ = F, npoints = 300)
+    ) %>%
+      ggplot(aes(x = t, y = psurv, colour = x, group = x)) +
+      geom_line() +
+      geom_point(data = data.frame(data_for_fit[c('x','y','Neff','t', 'species')]) %>%
+                   mutate(species = data_for_fit$converter(species)),
+                 mapping = aes(y = y/Neff)) +
+      scale_color_continuous(name = "Concentration") +
+      xlab('Time') +
+      ylab("Survival probability") +
+      ggthemes::theme_few()
+  }
+
 }

@@ -6,7 +6,7 @@
 #' mass is the total mass of the included indices
 #' height is the smallest component probability mass in the HDI
 #'
-#' @example For determining HDI of a beta(30,12) distribution
+#' @examples For determining HDI of a beta(30,12) distribution
 #' approximated on a grid:
 #'   probDensityVec = dbeta( seq(0,1,length=201) , 30 , 12 )
 #'  probMassVec = probDensityVec / sum( probDensityVec )

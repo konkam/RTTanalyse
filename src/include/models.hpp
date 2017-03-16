@@ -217,7 +217,7 @@ public:
         double lks_mu(0);
         lks_mu = vals_r__[pos__++];
         try {
-            writer__.scalar_lub_unconstrain(-(7),2,lks_mu);
+            writer__.scalar_lub_unconstrain(-(7),0,lks_mu);
         } catch (const std::exception& e) { 
             throw std::runtime_error(std::string("Error transforming variable lks_mu: ") + e.what());
         }
@@ -245,7 +245,7 @@ public:
         double lke_mu(0);
         lke_mu = vals_r__[pos__++];
         try {
-            writer__.scalar_lub_unconstrain(-(7),2,lke_mu);
+            writer__.scalar_lub_unconstrain(-(7),0,lke_mu);
         } catch (const std::exception& e) { 
             throw std::runtime_error(std::string("Error transforming variable lke_mu: ") + e.what());
         }
@@ -259,125 +259,125 @@ public:
         double lm0_mu(0);
         lm0_mu = vals_r__[pos__++];
         try {
-            writer__.scalar_lub_unconstrain(-(7),2,lm0_mu);
+            writer__.scalar_lub_unconstrain(-(7),-(1),lm0_mu);
         } catch (const std::exception& e) { 
             throw std::runtime_error(std::string("Error transforming variable lm0_mu: ") + e.what());
         }
 
-        if (!(context__.contains_r("lks_sigma")))
-            throw std::runtime_error("variable lks_sigma missing");
-        vals_r__ = context__.vals_r("lks_sigma");
+        if (!(context__.contains_r("lks_sigma_unif")))
+            throw std::runtime_error("variable lks_sigma_unif missing");
+        vals_r__ = context__.vals_r("lks_sigma_unif");
         pos__ = 0U;
-        context__.validate_dims("initialization", "lks_sigma", "double", context__.to_vec());
-        // generate_declaration lks_sigma
-        double lks_sigma(0);
-        lks_sigma = vals_r__[pos__++];
+        context__.validate_dims("initialization", "lks_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lks_sigma_unif
+        double lks_sigma_unif(0);
+        lks_sigma_unif = vals_r__[pos__++];
         try {
-            writer__.scalar_lb_unconstrain(0,lks_sigma);
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lks_sigma_unif);
         } catch (const std::exception& e) { 
-            throw std::runtime_error(std::string("Error transforming variable lks_sigma: ") + e.what());
+            throw std::runtime_error(std::string("Error transforming variable lks_sigma_unif: ") + e.what());
         }
 
-        if (!(context__.contains_r("lNEC_sigma")))
-            throw std::runtime_error("variable lNEC_sigma missing");
-        vals_r__ = context__.vals_r("lNEC_sigma");
+        if (!(context__.contains_r("lNEC_sigma_unif")))
+            throw std::runtime_error("variable lNEC_sigma_unif missing");
+        vals_r__ = context__.vals_r("lNEC_sigma_unif");
         pos__ = 0U;
-        context__.validate_dims("initialization", "lNEC_sigma", "double", context__.to_vec());
-        // generate_declaration lNEC_sigma
-        double lNEC_sigma(0);
-        lNEC_sigma = vals_r__[pos__++];
+        context__.validate_dims("initialization", "lNEC_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lNEC_sigma_unif
+        double lNEC_sigma_unif(0);
+        lNEC_sigma_unif = vals_r__[pos__++];
         try {
-            writer__.scalar_lb_unconstrain(0,lNEC_sigma);
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lNEC_sigma_unif);
         } catch (const std::exception& e) { 
-            throw std::runtime_error(std::string("Error transforming variable lNEC_sigma: ") + e.what());
+            throw std::runtime_error(std::string("Error transforming variable lNEC_sigma_unif: ") + e.what());
         }
 
-        if (!(context__.contains_r("lke_sigma")))
-            throw std::runtime_error("variable lke_sigma missing");
-        vals_r__ = context__.vals_r("lke_sigma");
+        if (!(context__.contains_r("lke_sigma_unif")))
+            throw std::runtime_error("variable lke_sigma_unif missing");
+        vals_r__ = context__.vals_r("lke_sigma_unif");
         pos__ = 0U;
-        context__.validate_dims("initialization", "lke_sigma", "double", context__.to_vec());
-        // generate_declaration lke_sigma
-        double lke_sigma(0);
-        lke_sigma = vals_r__[pos__++];
+        context__.validate_dims("initialization", "lke_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lke_sigma_unif
+        double lke_sigma_unif(0);
+        lke_sigma_unif = vals_r__[pos__++];
         try {
-            writer__.scalar_lb_unconstrain(0,lke_sigma);
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lke_sigma_unif);
         } catch (const std::exception& e) { 
-            throw std::runtime_error(std::string("Error transforming variable lke_sigma: ") + e.what());
+            throw std::runtime_error(std::string("Error transforming variable lke_sigma_unif: ") + e.what());
         }
 
-        if (!(context__.contains_r("lm0_sigma")))
-            throw std::runtime_error("variable lm0_sigma missing");
-        vals_r__ = context__.vals_r("lm0_sigma");
+        if (!(context__.contains_r("lm0_sigma_unif")))
+            throw std::runtime_error("variable lm0_sigma_unif missing");
+        vals_r__ = context__.vals_r("lm0_sigma_unif");
         pos__ = 0U;
-        context__.validate_dims("initialization", "lm0_sigma", "double", context__.to_vec());
-        // generate_declaration lm0_sigma
-        double lm0_sigma(0);
-        lm0_sigma = vals_r__[pos__++];
+        context__.validate_dims("initialization", "lm0_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lm0_sigma_unif
+        double lm0_sigma_unif(0);
+        lm0_sigma_unif = vals_r__[pos__++];
         try {
-            writer__.scalar_lb_unconstrain(0,lm0_sigma);
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lm0_sigma_unif);
         } catch (const std::exception& e) { 
-            throw std::runtime_error(std::string("Error transforming variable lm0_sigma: ") + e.what());
+            throw std::runtime_error(std::string("Error transforming variable lm0_sigma_unif: ") + e.what());
         }
 
-        if (!(context__.contains_r("lm0")))
-            throw std::runtime_error("variable lm0 missing");
-        vals_r__ = context__.vals_r("lm0");
+        if (!(context__.contains_r("lm0_raw")))
+            throw std::runtime_error("variable lm0_raw missing");
+        vals_r__ = context__.vals_r("lm0_raw");
         pos__ = 0U;
-        context__.validate_dims("initialization", "lm0", "vector_d", context__.to_vec(nspecies));
-        // generate_declaration lm0
-        vector_d lm0(static_cast<Eigen::VectorXd::Index>(nspecies));
+        context__.validate_dims("initialization", "lm0_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lm0_raw
+        vector_d lm0_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
         for (int j1__ = 0U; j1__ < nspecies; ++j1__)
-            lm0(j1__) = vals_r__[pos__++];
+            lm0_raw(j1__) = vals_r__[pos__++];
         try {
-            writer__.vector_unconstrain(lm0);
+            writer__.vector_unconstrain(lm0_raw);
         } catch (const std::exception& e) { 
-            throw std::runtime_error(std::string("Error transforming variable lm0: ") + e.what());
+            throw std::runtime_error(std::string("Error transforming variable lm0_raw: ") + e.what());
         }
 
-        if (!(context__.contains_r("lks")))
-            throw std::runtime_error("variable lks missing");
-        vals_r__ = context__.vals_r("lks");
+        if (!(context__.contains_r("lks_raw")))
+            throw std::runtime_error("variable lks_raw missing");
+        vals_r__ = context__.vals_r("lks_raw");
         pos__ = 0U;
-        context__.validate_dims("initialization", "lks", "vector_d", context__.to_vec(nspecies));
-        // generate_declaration lks
-        vector_d lks(static_cast<Eigen::VectorXd::Index>(nspecies));
+        context__.validate_dims("initialization", "lks_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lks_raw
+        vector_d lks_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
         for (int j1__ = 0U; j1__ < nspecies; ++j1__)
-            lks(j1__) = vals_r__[pos__++];
+            lks_raw(j1__) = vals_r__[pos__++];
         try {
-            writer__.vector_unconstrain(lks);
+            writer__.vector_unconstrain(lks_raw);
         } catch (const std::exception& e) { 
-            throw std::runtime_error(std::string("Error transforming variable lks: ") + e.what());
+            throw std::runtime_error(std::string("Error transforming variable lks_raw: ") + e.what());
         }
 
-        if (!(context__.contains_r("lNEC")))
-            throw std::runtime_error("variable lNEC missing");
-        vals_r__ = context__.vals_r("lNEC");
+        if (!(context__.contains_r("lNEC_raw")))
+            throw std::runtime_error("variable lNEC_raw missing");
+        vals_r__ = context__.vals_r("lNEC_raw");
         pos__ = 0U;
-        context__.validate_dims("initialization", "lNEC", "vector_d", context__.to_vec(nspecies));
-        // generate_declaration lNEC
-        vector_d lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        context__.validate_dims("initialization", "lNEC_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lNEC_raw
+        vector_d lNEC_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
         for (int j1__ = 0U; j1__ < nspecies; ++j1__)
-            lNEC(j1__) = vals_r__[pos__++];
+            lNEC_raw(j1__) = vals_r__[pos__++];
         try {
-            writer__.vector_unconstrain(lNEC);
+            writer__.vector_unconstrain(lNEC_raw);
         } catch (const std::exception& e) { 
-            throw std::runtime_error(std::string("Error transforming variable lNEC: ") + e.what());
+            throw std::runtime_error(std::string("Error transforming variable lNEC_raw: ") + e.what());
         }
 
-        if (!(context__.contains_r("lke")))
-            throw std::runtime_error("variable lke missing");
-        vals_r__ = context__.vals_r("lke");
+        if (!(context__.contains_r("lke_raw")))
+            throw std::runtime_error("variable lke_raw missing");
+        vals_r__ = context__.vals_r("lke_raw");
         pos__ = 0U;
-        context__.validate_dims("initialization", "lke", "vector_d", context__.to_vec(nspecies));
-        // generate_declaration lke
-        vector_d lke(static_cast<Eigen::VectorXd::Index>(nspecies));
+        context__.validate_dims("initialization", "lke_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lke_raw
+        vector_d lke_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
         for (int j1__ = 0U; j1__ < nspecies; ++j1__)
-            lke(j1__) = vals_r__[pos__++];
+            lke_raw(j1__) = vals_r__[pos__++];
         try {
-            writer__.vector_unconstrain(lke);
+            writer__.vector_unconstrain(lke_raw);
         } catch (const std::exception& e) { 
-            throw std::runtime_error(std::string("Error transforming variable lke: ") + e.what());
+            throw std::runtime_error(std::string("Error transforming variable lke_raw: ") + e.what());
         }
 
         params_r__ = writer__.data_r();
@@ -413,9 +413,9 @@ public:
         T__ lks_mu;
         (void) lks_mu;  // dummy to suppress unused var warning
         if (jacobian__)
-            lks_mu = in__.scalar_lub_constrain(-(7),2,lp__);
+            lks_mu = in__.scalar_lub_constrain(-(7),0,lp__);
         else
-            lks_mu = in__.scalar_lub_constrain(-(7),2);
+            lks_mu = in__.scalar_lub_constrain(-(7),0);
 
         T__ lNEC_mu;
         (void) lNEC_mu;  // dummy to suppress unused var warning
@@ -427,78 +427,118 @@ public:
         T__ lke_mu;
         (void) lke_mu;  // dummy to suppress unused var warning
         if (jacobian__)
-            lke_mu = in__.scalar_lub_constrain(-(7),2,lp__);
+            lke_mu = in__.scalar_lub_constrain(-(7),0,lp__);
         else
-            lke_mu = in__.scalar_lub_constrain(-(7),2);
+            lke_mu = in__.scalar_lub_constrain(-(7),0);
 
         T__ lm0_mu;
         (void) lm0_mu;  // dummy to suppress unused var warning
         if (jacobian__)
-            lm0_mu = in__.scalar_lub_constrain(-(7),2,lp__);
+            lm0_mu = in__.scalar_lub_constrain(-(7),-(1),lp__);
         else
-            lm0_mu = in__.scalar_lub_constrain(-(7),2);
+            lm0_mu = in__.scalar_lub_constrain(-(7),-(1));
 
-        T__ lks_sigma;
-        (void) lks_sigma;  // dummy to suppress unused var warning
+        T__ lks_sigma_unif;
+        (void) lks_sigma_unif;  // dummy to suppress unused var warning
         if (jacobian__)
-            lks_sigma = in__.scalar_lb_constrain(0,lp__);
+            lks_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
         else
-            lks_sigma = in__.scalar_lb_constrain(0);
+            lks_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
 
-        T__ lNEC_sigma;
-        (void) lNEC_sigma;  // dummy to suppress unused var warning
+        T__ lNEC_sigma_unif;
+        (void) lNEC_sigma_unif;  // dummy to suppress unused var warning
         if (jacobian__)
-            lNEC_sigma = in__.scalar_lb_constrain(0,lp__);
+            lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
         else
-            lNEC_sigma = in__.scalar_lb_constrain(0);
+            lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
 
-        T__ lke_sigma;
-        (void) lke_sigma;  // dummy to suppress unused var warning
+        T__ lke_sigma_unif;
+        (void) lke_sigma_unif;  // dummy to suppress unused var warning
         if (jacobian__)
-            lke_sigma = in__.scalar_lb_constrain(0,lp__);
+            lke_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
         else
-            lke_sigma = in__.scalar_lb_constrain(0);
+            lke_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
 
-        T__ lm0_sigma;
-        (void) lm0_sigma;  // dummy to suppress unused var warning
+        T__ lm0_sigma_unif;
+        (void) lm0_sigma_unif;  // dummy to suppress unused var warning
         if (jacobian__)
-            lm0_sigma = in__.scalar_lb_constrain(0,lp__);
+            lm0_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
         else
-            lm0_sigma = in__.scalar_lb_constrain(0);
+            lm0_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
 
-        Eigen::Matrix<T__,Eigen::Dynamic,1>  lm0;
-        (void) lm0;  // dummy to suppress unused var warning
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lm0_raw;
+        (void) lm0_raw;  // dummy to suppress unused var warning
         if (jacobian__)
-            lm0 = in__.vector_constrain(nspecies,lp__);
+            lm0_raw = in__.vector_constrain(nspecies,lp__);
         else
-            lm0 = in__.vector_constrain(nspecies);
+            lm0_raw = in__.vector_constrain(nspecies);
 
-        Eigen::Matrix<T__,Eigen::Dynamic,1>  lks;
-        (void) lks;  // dummy to suppress unused var warning
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lks_raw;
+        (void) lks_raw;  // dummy to suppress unused var warning
         if (jacobian__)
-            lks = in__.vector_constrain(nspecies,lp__);
+            lks_raw = in__.vector_constrain(nspecies,lp__);
         else
-            lks = in__.vector_constrain(nspecies);
+            lks_raw = in__.vector_constrain(nspecies);
 
-        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC;
-        (void) lNEC;  // dummy to suppress unused var warning
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC_raw;
+        (void) lNEC_raw;  // dummy to suppress unused var warning
         if (jacobian__)
-            lNEC = in__.vector_constrain(nspecies,lp__);
+            lNEC_raw = in__.vector_constrain(nspecies,lp__);
         else
-            lNEC = in__.vector_constrain(nspecies);
+            lNEC_raw = in__.vector_constrain(nspecies);
 
-        Eigen::Matrix<T__,Eigen::Dynamic,1>  lke;
-        (void) lke;  // dummy to suppress unused var warning
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lke_raw;
+        (void) lke_raw;  // dummy to suppress unused var warning
         if (jacobian__)
-            lke = in__.vector_constrain(nspecies,lp__);
+            lke_raw = in__.vector_constrain(nspecies,lp__);
         else
-            lke = in__.vector_constrain(nspecies);
+            lke_raw = in__.vector_constrain(nspecies);
 
 
         // transformed parameters
+        T__ lks_sigma;
+        (void) lks_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lks_sigma, DUMMY_VAR__);
+        stan::math::fill(lks_sigma,DUMMY_VAR__);
+        T__ lNEC_sigma;
+        (void) lNEC_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC_sigma, DUMMY_VAR__);
+        stan::math::fill(lNEC_sigma,DUMMY_VAR__);
+        T__ lke_sigma;
+        (void) lke_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lke_sigma, DUMMY_VAR__);
+        stan::math::fill(lke_sigma,DUMMY_VAR__);
+        T__ lm0_sigma;
+        (void) lm0_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0_sigma, DUMMY_VAR__);
+        stan::math::fill(lm0_sigma,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lm0(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lm0;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0, DUMMY_VAR__);
+        stan::math::fill(lm0,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lks(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lks;  // dummy to suppress unused var warning
+        stan::math::initialize(lks, DUMMY_VAR__);
+        stan::math::fill(lks,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lNEC;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC, DUMMY_VAR__);
+        stan::math::fill(lNEC,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lke(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lke;  // dummy to suppress unused var warning
+        stan::math::initialize(lke, DUMMY_VAR__);
+        stan::math::fill(lke,DUMMY_VAR__);
 
 
         try {
+            stan::math::assign(lks_sigma, (0.5 * tan(lks_sigma_unif)));
+            stan::math::assign(lNEC_sigma, (0.5 * tan(lNEC_sigma_unif)));
+            stan::math::assign(lke_sigma, (0.5 * tan(lke_sigma_unif)));
+            stan::math::assign(lm0_sigma, (0.5 * tan(lm0_sigma_unif)));
+            stan::math::assign(lm0, add(lm0_mu,multiply(lm0_sigma,lm0_raw)));
+            stan::math::assign(lks, add(lks_mu,multiply(lks_sigma,lks_raw)));
+            stan::math::assign(lNEC, add(lNEC_mu,multiply(lNEC_sigma,lNEC_raw)));
+            stan::math::assign(lke, add(lke_mu,multiply(lke_sigma,lke_raw)));
         } catch (const std::exception& e) {
             stan::lang::rethrow_located(e,current_statement_begin__);
             // Next line prevents compiler griping about no return
@@ -506,6 +546,54 @@ public:
         }
 
         // validate transformed parameters
+        if (stan::math::is_uninitialized(lks_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lks_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        if (stan::math::is_uninitialized(lNEC_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lNEC_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        if (stan::math::is_uninitialized(lke_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lke_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        if (stan::math::is_uninitialized(lm0_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lm0_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lm0(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lm0" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lks(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lks" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lNEC(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lNEC" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lke(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lke" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
 
         const char* function__ = "validate transformed params";
         (void) function__;  // dummy to suppress unused var warning
@@ -529,6 +617,10 @@ public:
                 (void) m0;  // dummy to suppress unused var warning
                 stan::math::initialize(m0, DUMMY_VAR__);
                 stan::math::fill(m0,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  log_psurv(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) log_psurv;  // dummy to suppress unused var warning
+                stan::math::initialize(log_psurv, DUMMY_VAR__);
+                stan::math::fill(log_psurv,DUMMY_VAR__);
                 Eigen::Matrix<T__,Eigen::Dynamic,1>  psurv(static_cast<Eigen::VectorXd::Index>(ndat));
                 (void) psurv;  // dummy to suppress unused var warning
                 stan::math::initialize(psurv, DUMMY_VAR__);
@@ -543,10 +635,6 @@ public:
                 stan::math::fill(tref,DUMMY_VAR__);
 
 
-                lp_accum__.add(cauchy_log<propto__>(lke_sigma, 0, 2.5));
-                lp_accum__.add(cauchy_log<propto__>(lks_sigma, 0, 2.5));
-                lp_accum__.add(cauchy_log<propto__>(lm0_sigma, 0, 2.5));
-                lp_accum__.add(cauchy_log<propto__>(lNEC_sigma, 0, 2.5));
                 for (int i = 1; i <= nspecies; ++i) {
 
                     stan::math::assign(get_base1_lhs(m0,i,"m0",1), pow(10.0,get_base1(lm0,i,"lm0",1)));
@@ -556,22 +644,22 @@ public:
                 }
                 for (int i = 1; i <= ndat; ++i) {
 
-                    stan::math::assign(get_base1_lhs(psurv,i,"psurv",1), exp((-(get_base1(m0,get_base1(species,i,"species",1),"m0",1)) * (get_base1(t,i,"t",1) - get_base1(tprec,i,"tprec",1)))));
+                    stan::math::assign(get_base1_lhs(log_psurv,i,"log_psurv",1), (-(get_base1(m0,get_base1(species,i,"species",1),"m0",1)) * (get_base1(t,i,"t",1) - get_base1(tprec,i,"tprec",1))));
                     if (as_bool(logical_gt(get_base1(x,i,"x",1),get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)))) {
 
                         stan::math::assign(get_base1_lhs(tNEC,i,"tNEC",1), ((-(1) / get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * log((1 - (get_base1(NEC,get_base1(species,i,"species",1),"NEC",1) / get_base1(x,i,"x",1))))));
                         if (as_bool(logical_gt(get_base1(t,i,"t",1),get_base1(tNEC,i,"tNEC",1)))) {
 
                             stan::math::assign(get_base1_lhs(tref,i,"tref",1), stan::math::fmax(get_base1(tprec,i,"tprec",1),get_base1(tNEC,i,"tNEC",1)));
-                            stan::math::assign(get_base1_lhs(psurv,i,"psurv",1), (get_base1(psurv,i,"psurv",1) * exp((-(get_base1(ks,get_base1(species,i,"species",1),"ks",1)) * (((get_base1(x,i,"x",1) - get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)) * (get_base1(t,i,"t",1) - get_base1(tref,i,"tref",1))) + (((1 / get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(x,i,"x",1)) * (exp((-(get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(t,i,"t",1))) - exp((-(get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(tref,i,"tref",1))))))))));
+                            stan::math::assign(get_base1_lhs(log_psurv,i,"log_psurv",1), (get_base1(log_psurv,i,"log_psurv",1) - (get_base1(ks,get_base1(species,i,"species",1),"ks",1) * (((get_base1(x,i,"x",1) - get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)) * (get_base1(t,i,"t",1) - get_base1(tref,i,"tref",1))) + ((((1 / get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(x,i,"x",1)) * exp((-(get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(tref,i,"tref",1)))) * (exp((-(get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * (get_base1(t,i,"t",1) - get_base1(tref,i,"tref",1)))) - 1))))));
                         }
                     }
-                    stan::math::assign(get_base1_lhs(psurv,i,"psurv",1), stan::math::fmax(get_base1(psurv,i,"psurv",1),pow(10.0,-(6.0))));
+                    stan::math::assign(get_base1_lhs(psurv,i,"psurv",1), exp(get_base1(log_psurv,i,"log_psurv",1)));
                 }
-                lp_accum__.add(normal_log<propto__>(lks, lks_mu, lks_sigma));
-                lp_accum__.add(normal_log<propto__>(lNEC, lNEC_mu, lNEC_sigma));
-                lp_accum__.add(normal_log<propto__>(lke, lke_mu, lke_sigma));
-                lp_accum__.add(normal_log<propto__>(lm0, lm0_mu, lm0_sigma));
+                lp_accum__.add(normal_log<propto__>(lks_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lNEC_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lke_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lm0_raw, 0, 1));
                 lp_accum__.add(binomial_log<propto__>(y, Nprec, psurv));
             }
         } catch (const std::exception& e) {
@@ -603,6 +691,14 @@ public:
         names__.push_back("lNEC_mu");
         names__.push_back("lke_mu");
         names__.push_back("lm0_mu");
+        names__.push_back("lks_sigma_unif");
+        names__.push_back("lNEC_sigma_unif");
+        names__.push_back("lke_sigma_unif");
+        names__.push_back("lm0_sigma_unif");
+        names__.push_back("lm0_raw");
+        names__.push_back("lks_raw");
+        names__.push_back("lNEC_raw");
+        names__.push_back("lke_raw");
         names__.push_back("lks_sigma");
         names__.push_back("lNEC_sigma");
         names__.push_back("lke_sigma");
@@ -645,6 +741,26 @@ public:
         dims__.resize(0);
         dims__.push_back(nspecies);
         dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
     }
 
     template <typename RNG>
@@ -660,22 +776,100 @@ public:
         static const char* function__ = "model_hierarchical_no_correlation_namespace::write_array";
         (void) function__; // dummy call to supress warning
         // read-transform, write parameters
-        double lks_mu = in__.scalar_lub_constrain(-(7),2);
+        double lks_mu = in__.scalar_lub_constrain(-(7),0);
         double lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1));
-        double lke_mu = in__.scalar_lub_constrain(-(7),2);
-        double lm0_mu = in__.scalar_lub_constrain(-(7),2);
-        double lks_sigma = in__.scalar_lb_constrain(0);
-        double lNEC_sigma = in__.scalar_lb_constrain(0);
-        double lke_sigma = in__.scalar_lb_constrain(0);
-        double lm0_sigma = in__.scalar_lb_constrain(0);
-        vector_d lm0 = in__.vector_constrain(nspecies);
-        vector_d lks = in__.vector_constrain(nspecies);
-        vector_d lNEC = in__.vector_constrain(nspecies);
-        vector_d lke = in__.vector_constrain(nspecies);
+        double lke_mu = in__.scalar_lub_constrain(-(7),0);
+        double lm0_mu = in__.scalar_lub_constrain(-(7),-(1));
+        double lks_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        double lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        double lke_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        double lm0_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        vector_d lm0_raw = in__.vector_constrain(nspecies);
+        vector_d lks_raw = in__.vector_constrain(nspecies);
+        vector_d lNEC_raw = in__.vector_constrain(nspecies);
+        vector_d lke_raw = in__.vector_constrain(nspecies);
         vars__.push_back(lks_mu);
         vars__.push_back(lNEC_mu);
         vars__.push_back(lke_mu);
         vars__.push_back(lm0_mu);
+        vars__.push_back(lks_sigma_unif);
+        vars__.push_back(lNEC_sigma_unif);
+        vars__.push_back(lke_sigma_unif);
+        vars__.push_back(lm0_sigma_unif);
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lm0_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lks_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lNEC_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lke_raw[k_0__]);
+        }
+
+        if (!include_tparams__) return;
+        // declare and define transformed parameters
+        double lp__ = 0.0;
+        (void) lp__; // dummy call to supress warning
+        stan::math::accumulator<double> lp_accum__;
+
+        double DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        double lks_sigma(0.0);
+        (void) lks_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lks_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lks_sigma,DUMMY_VAR__);
+        double lNEC_sigma(0.0);
+        (void) lNEC_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lNEC_sigma,DUMMY_VAR__);
+        double lke_sigma(0.0);
+        (void) lke_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lke_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lke_sigma,DUMMY_VAR__);
+        double lm0_sigma(0.0);
+        (void) lm0_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lm0_sigma,DUMMY_VAR__);
+        vector_d lm0(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lm0;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lm0,DUMMY_VAR__);
+        vector_d lks(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lks;  // dummy to suppress unused var warning
+        stan::math::initialize(lks, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lks,DUMMY_VAR__);
+        vector_d lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lNEC;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lNEC,DUMMY_VAR__);
+        vector_d lke(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lke;  // dummy to suppress unused var warning
+        stan::math::initialize(lke, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lke,DUMMY_VAR__);
+
+
+        try {
+            stan::math::assign(lks_sigma, (0.5 * tan(lks_sigma_unif)));
+            stan::math::assign(lNEC_sigma, (0.5 * tan(lNEC_sigma_unif)));
+            stan::math::assign(lke_sigma, (0.5 * tan(lke_sigma_unif)));
+            stan::math::assign(lm0_sigma, (0.5 * tan(lm0_sigma_unif)));
+            stan::math::assign(lm0, add(lm0_mu,multiply(lm0_sigma,lm0_raw)));
+            stan::math::assign(lks, add(lks_mu,multiply(lks_sigma,lks_raw)));
+            stan::math::assign(lNEC, add(lNEC_mu,multiply(lNEC_sigma,lNEC_raw)));
+            stan::math::assign(lke, add(lke_mu,multiply(lke_sigma,lke_raw)));
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed parameters
+
+        // write transformed parameters
         vars__.push_back(lks_sigma);
         vars__.push_back(lNEC_sigma);
         vars__.push_back(lke_sigma);
@@ -692,28 +886,6 @@ public:
         for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
             vars__.push_back(lke[k_0__]);
         }
-
-        if (!include_tparams__) return;
-        // declare and define transformed parameters
-        double lp__ = 0.0;
-        (void) lp__; // dummy call to supress warning
-        stan::math::accumulator<double> lp_accum__;
-
-        double DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
-        (void) DUMMY_VAR__;  // suppress unused var warning
-
-
-
-        try {
-        } catch (const std::exception& e) {
-            stan::lang::rethrow_located(e,current_statement_begin__);
-            // Next line prevents compiler griping about no return
-            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
-        }
-
-        // validate transformed parameters
-
-        // write transformed parameters
 
         if (!include_gqs__) return;
         // declare and define generated quantities
@@ -771,6 +943,40 @@ public:
         param_name_stream__ << "lm0_mu";
         param_names__.push_back(param_name_stream__.str());
         param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__ && !include_tparams__) return;
+        param_name_stream__.str(std::string());
         param_name_stream__ << "lks_sigma";
         param_names__.push_back(param_name_stream__.str());
         param_name_stream__.str(std::string());
@@ -803,7 +1009,2118 @@ public:
             param_names__.push_back(param_name_stream__.str());
         }
 
+        if (!include_gqs__) return;
+    }
+
+
+    void unconstrained_param_names(std::vector<std::string>& param_names__,
+                                   bool include_tparams__ = true,
+                                   bool include_gqs__ = true) const {
+        std::stringstream param_name_stream__;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
         if (!include_gqs__ && !include_tparams__) return;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__) return;
+    }
+
+}; // model
+
+} // namespace
+
+
+
+
+// Code generated by Stan version 2.14
+
+#include <stan/model/model_header.hpp>
+
+namespace model_hierarchical_no_correlation_old_namespace {
+
+using std::istream;
+using std::string;
+using std::stringstream;
+using std::vector;
+using stan::io::dump;
+using stan::math::lgamma;
+using stan::model::prob_grad;
+using namespace stan::math;
+
+typedef Eigen::Matrix<double,Eigen::Dynamic,1> vector_d;
+typedef Eigen::Matrix<double,1,Eigen::Dynamic> row_vector_d;
+typedef Eigen::Matrix<double,Eigen::Dynamic,Eigen::Dynamic> matrix_d;
+
+static int current_statement_begin__;
+
+class model_hierarchical_no_correlation_old : public prob_grad {
+private:
+    int ndat;
+    int nspecies;
+    double minc;
+    double maxc;
+    vector<double> x;
+    vector<double> t;
+    vector<double> tprec;
+    vector<int> y;
+    vector<int> Nprec;
+    vector<int> species;
+public:
+    model_hierarchical_no_correlation_old(stan::io::var_context& context__,
+        std::ostream* pstream__ = 0)
+        : prob_grad(0) {
+        typedef boost::ecuyer1988 rng_t;
+        rng_t base_rng(0);  // 0 seed default
+        ctor_body(context__, base_rng, pstream__);
+    }
+
+    template <class RNG>
+    model_hierarchical_no_correlation_old(stan::io::var_context& context__,
+        RNG& base_rng__,
+        std::ostream* pstream__ = 0)
+        : prob_grad(0) {
+        ctor_body(context__, base_rng__, pstream__);
+    }
+
+    template <class RNG>
+    void ctor_body(stan::io::var_context& context__,
+                   RNG& base_rng__,
+                   std::ostream* pstream__) {
+        current_statement_begin__ = -1;
+
+        static const char* function__ = "model_hierarchical_no_correlation_old_namespace::model_hierarchical_no_correlation_old";
+        (void) function__; // dummy call to supress warning
+        size_t pos__;
+        (void) pos__; // dummy call to supress warning
+        std::vector<int> vals_i__;
+        std::vector<double> vals_r__;
+        double DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        // initialize member variables
+        context__.validate_dims("data initialization", "ndat", "int", context__.to_vec());
+        ndat = int(0);
+        vals_i__ = context__.vals_i("ndat");
+        pos__ = 0;
+        ndat = vals_i__[pos__++];
+        context__.validate_dims("data initialization", "nspecies", "int", context__.to_vec());
+        nspecies = int(0);
+        vals_i__ = context__.vals_i("nspecies");
+        pos__ = 0;
+        nspecies = vals_i__[pos__++];
+        context__.validate_dims("data initialization", "minc", "double", context__.to_vec());
+        minc = double(0);
+        vals_r__ = context__.vals_r("minc");
+        pos__ = 0;
+        minc = vals_r__[pos__++];
+        context__.validate_dims("data initialization", "maxc", "double", context__.to_vec());
+        maxc = double(0);
+        vals_r__ = context__.vals_r("maxc");
+        pos__ = 0;
+        maxc = vals_r__[pos__++];
+        context__.validate_dims("data initialization", "x", "double", context__.to_vec(ndat));
+        validate_non_negative_index("x", "ndat", ndat);
+        x = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("x");
+        pos__ = 0;
+        size_t x_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < x_limit_0__; ++i_0__) {
+            x[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "t", "double", context__.to_vec(ndat));
+        validate_non_negative_index("t", "ndat", ndat);
+        t = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("t");
+        pos__ = 0;
+        size_t t_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < t_limit_0__; ++i_0__) {
+            t[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "tprec", "double", context__.to_vec(ndat));
+        validate_non_negative_index("tprec", "ndat", ndat);
+        tprec = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("tprec");
+        pos__ = 0;
+        size_t tprec_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < tprec_limit_0__; ++i_0__) {
+            tprec[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "y", "int", context__.to_vec(ndat));
+        validate_non_negative_index("y", "ndat", ndat);
+        y = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("y");
+        pos__ = 0;
+        size_t y_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < y_limit_0__; ++i_0__) {
+            y[i_0__] = vals_i__[pos__++];
+        }
+        context__.validate_dims("data initialization", "Nprec", "int", context__.to_vec(ndat));
+        validate_non_negative_index("Nprec", "ndat", ndat);
+        Nprec = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("Nprec");
+        pos__ = 0;
+        size_t Nprec_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < Nprec_limit_0__; ++i_0__) {
+            Nprec[i_0__] = vals_i__[pos__++];
+        }
+        context__.validate_dims("data initialization", "species", "int", context__.to_vec(ndat));
+        validate_non_negative_index("species", "ndat", ndat);
+        species = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("species");
+        pos__ = 0;
+        size_t species_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < species_limit_0__; ++i_0__) {
+            species[i_0__] = vals_i__[pos__++];
+        }
+
+        // validate, data variables
+        check_greater_or_equal(function__,"ndat",ndat,0);
+        check_greater_or_equal(function__,"nspecies",nspecies,0);
+        check_greater_or_equal(function__,"minc",minc,0);
+        check_greater_or_equal(function__,"maxc",maxc,0);
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"x[k0__]",x[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"t[k0__]",t[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"tprec[k0__]",tprec[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"y[k0__]",y[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"Nprec[k0__]",Nprec[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"species[k0__]",species[k0__],0);
+        }
+        // initialize data variables
+
+        try {
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed data
+
+        // set parameter ranges
+        num_params_r__ = 0U;
+        param_ranges_i__.clear();
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        num_params_r__ += nspecies;
+        num_params_r__ += nspecies;
+        num_params_r__ += nspecies;
+        num_params_r__ += nspecies;
+    }
+
+    ~model_hierarchical_no_correlation_old() { }
+
+
+    void transform_inits(const stan::io::var_context& context__,
+                         std::vector<int>& params_i__,
+                         std::vector<double>& params_r__,
+                         std::ostream* pstream__) const {
+        stan::io::writer<double> writer__(params_r__,params_i__);
+        size_t pos__;
+        (void) pos__; // dummy call to supress warning
+        std::vector<double> vals_r__;
+        std::vector<int> vals_i__;
+
+        if (!(context__.contains_r("lks_mu")))
+            throw std::runtime_error("variable lks_mu missing");
+        vals_r__ = context__.vals_r("lks_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lks_mu", "double", context__.to_vec());
+        // generate_declaration lks_mu
+        double lks_mu(0);
+        lks_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(-(7),0,lks_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lks_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lNEC_mu")))
+            throw std::runtime_error("variable lNEC_mu missing");
+        vals_r__ = context__.vals_r("lNEC_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_mu", "double", context__.to_vec());
+        // generate_declaration lNEC_mu
+        double lNEC_mu(0);
+        lNEC_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1),lNEC_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lke_mu")))
+            throw std::runtime_error("variable lke_mu missing");
+        vals_r__ = context__.vals_r("lke_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lke_mu", "double", context__.to_vec());
+        // generate_declaration lke_mu
+        double lke_mu(0);
+        lke_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(-(7),0,lke_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lke_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lm0_mu")))
+            throw std::runtime_error("variable lm0_mu missing");
+        vals_r__ = context__.vals_r("lm0_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lm0_mu", "double", context__.to_vec());
+        // generate_declaration lm0_mu
+        double lm0_mu(0);
+        lm0_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(-(7),-(1),lm0_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lm0_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lks_sigma_unif")))
+            throw std::runtime_error("variable lks_sigma_unif missing");
+        vals_r__ = context__.vals_r("lks_sigma_unif");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lks_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lks_sigma_unif
+        double lks_sigma_unif(0);
+        lks_sigma_unif = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lks_sigma_unif);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lks_sigma_unif: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lNEC_sigma_unif")))
+            throw std::runtime_error("variable lNEC_sigma_unif missing");
+        vals_r__ = context__.vals_r("lNEC_sigma_unif");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lNEC_sigma_unif
+        double lNEC_sigma_unif(0);
+        lNEC_sigma_unif = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lNEC_sigma_unif);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_sigma_unif: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lke_sigma_unif")))
+            throw std::runtime_error("variable lke_sigma_unif missing");
+        vals_r__ = context__.vals_r("lke_sigma_unif");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lke_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lke_sigma_unif
+        double lke_sigma_unif(0);
+        lke_sigma_unif = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lke_sigma_unif);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lke_sigma_unif: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lm0_sigma_unif")))
+            throw std::runtime_error("variable lm0_sigma_unif missing");
+        vals_r__ = context__.vals_r("lm0_sigma_unif");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lm0_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lm0_sigma_unif
+        double lm0_sigma_unif(0);
+        lm0_sigma_unif = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lm0_sigma_unif);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lm0_sigma_unif: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lm0_raw")))
+            throw std::runtime_error("variable lm0_raw missing");
+        vals_r__ = context__.vals_r("lm0_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lm0_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lm0_raw
+        vector_d lm0_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lm0_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lm0_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lm0_raw: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lks_raw")))
+            throw std::runtime_error("variable lks_raw missing");
+        vals_r__ = context__.vals_r("lks_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lks_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lks_raw
+        vector_d lks_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lks_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lks_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lks_raw: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lNEC_raw")))
+            throw std::runtime_error("variable lNEC_raw missing");
+        vals_r__ = context__.vals_r("lNEC_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lNEC_raw
+        vector_d lNEC_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lNEC_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lNEC_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_raw: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lke_raw")))
+            throw std::runtime_error("variable lke_raw missing");
+        vals_r__ = context__.vals_r("lke_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lke_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lke_raw
+        vector_d lke_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lke_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lke_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lke_raw: ") + e.what());
+        }
+
+        params_r__ = writer__.data_r();
+        params_i__ = writer__.data_i();
+    }
+
+    void transform_inits(const stan::io::var_context& context,
+                         Eigen::Matrix<double,Eigen::Dynamic,1>& params_r,
+                         std::ostream* pstream__) const {
+      std::vector<double> params_r_vec;
+      std::vector<int> params_i_vec;
+      transform_inits(context, params_i_vec, params_r_vec, pstream__);
+      params_r.resize(params_r_vec.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        params_r(i) = params_r_vec[i];
+    }
+
+
+    template <bool propto__, bool jacobian__, typename T__>
+    T__ log_prob(vector<T__>& params_r__,
+                 vector<int>& params_i__,
+                 std::ostream* pstream__ = 0) const {
+
+        T__ DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        T__ lp__(0.0);
+        stan::math::accumulator<T__> lp_accum__;
+
+        // model parameters
+        stan::io::reader<T__> in__(params_r__,params_i__);
+
+        T__ lks_mu;
+        (void) lks_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lks_mu = in__.scalar_lub_constrain(-(7),0,lp__);
+        else
+            lks_mu = in__.scalar_lub_constrain(-(7),0);
+
+        T__ lNEC_mu;
+        (void) lNEC_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1),lp__);
+        else
+            lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1));
+
+        T__ lke_mu;
+        (void) lke_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lke_mu = in__.scalar_lub_constrain(-(7),0,lp__);
+        else
+            lke_mu = in__.scalar_lub_constrain(-(7),0);
+
+        T__ lm0_mu;
+        (void) lm0_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lm0_mu = in__.scalar_lub_constrain(-(7),-(1),lp__);
+        else
+            lm0_mu = in__.scalar_lub_constrain(-(7),-(1));
+
+        T__ lks_sigma_unif;
+        (void) lks_sigma_unif;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lks_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
+        else
+            lks_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+
+        T__ lNEC_sigma_unif;
+        (void) lNEC_sigma_unif;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
+        else
+            lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+
+        T__ lke_sigma_unif;
+        (void) lke_sigma_unif;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lke_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
+        else
+            lke_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+
+        T__ lm0_sigma_unif;
+        (void) lm0_sigma_unif;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lm0_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
+        else
+            lm0_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lm0_raw;
+        (void) lm0_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lm0_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lm0_raw = in__.vector_constrain(nspecies);
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lks_raw;
+        (void) lks_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lks_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lks_raw = in__.vector_constrain(nspecies);
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC_raw;
+        (void) lNEC_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lNEC_raw = in__.vector_constrain(nspecies);
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lke_raw;
+        (void) lke_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lke_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lke_raw = in__.vector_constrain(nspecies);
+
+
+        // transformed parameters
+        T__ lks_sigma;
+        (void) lks_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lks_sigma, DUMMY_VAR__);
+        stan::math::fill(lks_sigma,DUMMY_VAR__);
+        T__ lNEC_sigma;
+        (void) lNEC_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC_sigma, DUMMY_VAR__);
+        stan::math::fill(lNEC_sigma,DUMMY_VAR__);
+        T__ lke_sigma;
+        (void) lke_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lke_sigma, DUMMY_VAR__);
+        stan::math::fill(lke_sigma,DUMMY_VAR__);
+        T__ lm0_sigma;
+        (void) lm0_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0_sigma, DUMMY_VAR__);
+        stan::math::fill(lm0_sigma,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lm0(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lm0;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0, DUMMY_VAR__);
+        stan::math::fill(lm0,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lks(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lks;  // dummy to suppress unused var warning
+        stan::math::initialize(lks, DUMMY_VAR__);
+        stan::math::fill(lks,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lNEC;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC, DUMMY_VAR__);
+        stan::math::fill(lNEC,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lke(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lke;  // dummy to suppress unused var warning
+        stan::math::initialize(lke, DUMMY_VAR__);
+        stan::math::fill(lke,DUMMY_VAR__);
+
+
+        try {
+            stan::math::assign(lks_sigma, (0.5 * tan(lks_sigma_unif)));
+            stan::math::assign(lNEC_sigma, (0.5 * tan(lNEC_sigma_unif)));
+            stan::math::assign(lke_sigma, (0.5 * tan(lke_sigma_unif)));
+            stan::math::assign(lm0_sigma, (0.5 * tan(lm0_sigma_unif)));
+            stan::math::assign(lm0, add(lm0_mu,multiply(lm0_sigma,lm0_raw)));
+            stan::math::assign(lks, add(lks_mu,multiply(lks_sigma,lks_raw)));
+            stan::math::assign(lNEC, add(lNEC_mu,multiply(lNEC_sigma,lNEC_raw)));
+            stan::math::assign(lke, add(lke_mu,multiply(lke_sigma,lke_raw)));
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed parameters
+        if (stan::math::is_uninitialized(lks_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lks_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        if (stan::math::is_uninitialized(lNEC_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lNEC_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        if (stan::math::is_uninitialized(lke_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lke_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        if (stan::math::is_uninitialized(lm0_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lm0_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lm0(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lm0" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lks(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lks" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lNEC(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lNEC" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lke(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lke" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+
+        const char* function__ = "validate transformed params";
+        (void) function__;  // dummy to suppress unused var warning
+
+        // model body
+        try {
+            {
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  ks(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) ks;  // dummy to suppress unused var warning
+                stan::math::initialize(ks, DUMMY_VAR__);
+                stan::math::fill(ks,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  NEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) NEC;  // dummy to suppress unused var warning
+                stan::math::initialize(NEC, DUMMY_VAR__);
+                stan::math::fill(NEC,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  ke(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) ke;  // dummy to suppress unused var warning
+                stan::math::initialize(ke, DUMMY_VAR__);
+                stan::math::fill(ke,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  m0(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) m0;  // dummy to suppress unused var warning
+                stan::math::initialize(m0, DUMMY_VAR__);
+                stan::math::fill(m0,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  psurv(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) psurv;  // dummy to suppress unused var warning
+                stan::math::initialize(psurv, DUMMY_VAR__);
+                stan::math::fill(psurv,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  tNEC(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) tNEC;  // dummy to suppress unused var warning
+                stan::math::initialize(tNEC, DUMMY_VAR__);
+                stan::math::fill(tNEC,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  tref(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) tref;  // dummy to suppress unused var warning
+                stan::math::initialize(tref, DUMMY_VAR__);
+                stan::math::fill(tref,DUMMY_VAR__);
+
+
+                for (int i = 1; i <= nspecies; ++i) {
+
+                    stan::math::assign(get_base1_lhs(m0,i,"m0",1), pow(10.0,get_base1(lm0,i,"lm0",1)));
+                    stan::math::assign(get_base1_lhs(ks,i,"ks",1), pow(10.0,get_base1(lks,i,"lks",1)));
+                    stan::math::assign(get_base1_lhs(NEC,i,"NEC",1), pow(10.0,get_base1(lNEC,i,"lNEC",1)));
+                    stan::math::assign(get_base1_lhs(ke,i,"ke",1), pow(10.0,get_base1(lke,i,"lke",1)));
+                }
+                for (int i = 1; i <= ndat; ++i) {
+
+                    stan::math::assign(get_base1_lhs(psurv,i,"psurv",1), exp((-(get_base1(m0,get_base1(species,i,"species",1),"m0",1)) * (get_base1(t,i,"t",1) - get_base1(tprec,i,"tprec",1)))));
+                    if (as_bool(logical_gt(get_base1(x,i,"x",1),get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)))) {
+
+                        stan::math::assign(get_base1_lhs(tNEC,i,"tNEC",1), ((-(1) / get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * log((1 - (get_base1(NEC,get_base1(species,i,"species",1),"NEC",1) / get_base1(x,i,"x",1))))));
+                        if (as_bool(logical_gt(get_base1(t,i,"t",1),get_base1(tNEC,i,"tNEC",1)))) {
+
+                            stan::math::assign(get_base1_lhs(tref,i,"tref",1), stan::math::fmax(get_base1(tprec,i,"tprec",1),get_base1(tNEC,i,"tNEC",1)));
+                            stan::math::assign(get_base1_lhs(psurv,i,"psurv",1), (get_base1(psurv,i,"psurv",1) * exp((-(get_base1(ks,get_base1(species,i,"species",1),"ks",1)) * (((get_base1(x,i,"x",1) - get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)) * (get_base1(t,i,"t",1) - get_base1(tref,i,"tref",1))) + (((1 / get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(x,i,"x",1)) * (exp((-(get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(t,i,"t",1))) - exp((-(get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(tref,i,"tref",1))))))))));
+                        }
+                    }
+                }
+                lp_accum__.add(normal_log<propto__>(lks_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lNEC_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lke_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lm0_raw, 0, 1));
+                lp_accum__.add(binomial_log<propto__>(y, Nprec, psurv));
+            }
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        lp_accum__.add(lp__);
+        return lp_accum__.sum();
+
+    } // log_prob()
+
+    template <bool propto, bool jacobian, typename T_>
+    T_ log_prob(Eigen::Matrix<T_,Eigen::Dynamic,1>& params_r,
+               std::ostream* pstream = 0) const {
+      std::vector<T_> vec_params_r;
+      vec_params_r.reserve(params_r.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        vec_params_r.push_back(params_r(i));
+      std::vector<int> vec_params_i;
+      return log_prob<propto,jacobian,T_>(vec_params_r, vec_params_i, pstream);
+    }
+
+
+    void get_param_names(std::vector<std::string>& names__) const {
+        names__.resize(0);
+        names__.push_back("lks_mu");
+        names__.push_back("lNEC_mu");
+        names__.push_back("lke_mu");
+        names__.push_back("lm0_mu");
+        names__.push_back("lks_sigma_unif");
+        names__.push_back("lNEC_sigma_unif");
+        names__.push_back("lke_sigma_unif");
+        names__.push_back("lm0_sigma_unif");
+        names__.push_back("lm0_raw");
+        names__.push_back("lks_raw");
+        names__.push_back("lNEC_raw");
+        names__.push_back("lke_raw");
+        names__.push_back("lks_sigma");
+        names__.push_back("lNEC_sigma");
+        names__.push_back("lke_sigma");
+        names__.push_back("lm0_sigma");
+        names__.push_back("lm0");
+        names__.push_back("lks");
+        names__.push_back("lNEC");
+        names__.push_back("lke");
+    }
+
+
+    void get_dims(std::vector<std::vector<size_t> >& dimss__) const {
+        dimss__.resize(0);
+        std::vector<size_t> dims__;
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+    }
+
+    template <typename RNG>
+    void write_array(RNG& base_rng__,
+                     std::vector<double>& params_r__,
+                     std::vector<int>& params_i__,
+                     std::vector<double>& vars__,
+                     bool include_tparams__ = true,
+                     bool include_gqs__ = true,
+                     std::ostream* pstream__ = 0) const {
+        vars__.resize(0);
+        stan::io::reader<double> in__(params_r__,params_i__);
+        static const char* function__ = "model_hierarchical_no_correlation_old_namespace::write_array";
+        (void) function__; // dummy call to supress warning
+        // read-transform, write parameters
+        double lks_mu = in__.scalar_lub_constrain(-(7),0);
+        double lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1));
+        double lke_mu = in__.scalar_lub_constrain(-(7),0);
+        double lm0_mu = in__.scalar_lub_constrain(-(7),-(1));
+        double lks_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        double lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        double lke_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        double lm0_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        vector_d lm0_raw = in__.vector_constrain(nspecies);
+        vector_d lks_raw = in__.vector_constrain(nspecies);
+        vector_d lNEC_raw = in__.vector_constrain(nspecies);
+        vector_d lke_raw = in__.vector_constrain(nspecies);
+        vars__.push_back(lks_mu);
+        vars__.push_back(lNEC_mu);
+        vars__.push_back(lke_mu);
+        vars__.push_back(lm0_mu);
+        vars__.push_back(lks_sigma_unif);
+        vars__.push_back(lNEC_sigma_unif);
+        vars__.push_back(lke_sigma_unif);
+        vars__.push_back(lm0_sigma_unif);
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lm0_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lks_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lNEC_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lke_raw[k_0__]);
+        }
+
+        if (!include_tparams__) return;
+        // declare and define transformed parameters
+        double lp__ = 0.0;
+        (void) lp__; // dummy call to supress warning
+        stan::math::accumulator<double> lp_accum__;
+
+        double DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        double lks_sigma(0.0);
+        (void) lks_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lks_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lks_sigma,DUMMY_VAR__);
+        double lNEC_sigma(0.0);
+        (void) lNEC_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lNEC_sigma,DUMMY_VAR__);
+        double lke_sigma(0.0);
+        (void) lke_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lke_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lke_sigma,DUMMY_VAR__);
+        double lm0_sigma(0.0);
+        (void) lm0_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lm0_sigma,DUMMY_VAR__);
+        vector_d lm0(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lm0;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lm0,DUMMY_VAR__);
+        vector_d lks(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lks;  // dummy to suppress unused var warning
+        stan::math::initialize(lks, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lks,DUMMY_VAR__);
+        vector_d lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lNEC;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lNEC,DUMMY_VAR__);
+        vector_d lke(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lke;  // dummy to suppress unused var warning
+        stan::math::initialize(lke, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lke,DUMMY_VAR__);
+
+
+        try {
+            stan::math::assign(lks_sigma, (0.5 * tan(lks_sigma_unif)));
+            stan::math::assign(lNEC_sigma, (0.5 * tan(lNEC_sigma_unif)));
+            stan::math::assign(lke_sigma, (0.5 * tan(lke_sigma_unif)));
+            stan::math::assign(lm0_sigma, (0.5 * tan(lm0_sigma_unif)));
+            stan::math::assign(lm0, add(lm0_mu,multiply(lm0_sigma,lm0_raw)));
+            stan::math::assign(lks, add(lks_mu,multiply(lks_sigma,lks_raw)));
+            stan::math::assign(lNEC, add(lNEC_mu,multiply(lNEC_sigma,lNEC_raw)));
+            stan::math::assign(lke, add(lke_mu,multiply(lke_sigma,lke_raw)));
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed parameters
+
+        // write transformed parameters
+        vars__.push_back(lks_sigma);
+        vars__.push_back(lNEC_sigma);
+        vars__.push_back(lke_sigma);
+        vars__.push_back(lm0_sigma);
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lm0[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lks[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lNEC[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lke[k_0__]);
+        }
+
+        if (!include_gqs__) return;
+        // declare and define generated quantities
+
+
+        try {
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate generated quantities
+
+        // write generated quantities
+    }
+
+    template <typename RNG>
+    void write_array(RNG& base_rng,
+                     Eigen::Matrix<double,Eigen::Dynamic,1>& params_r,
+                     Eigen::Matrix<double,Eigen::Dynamic,1>& vars,
+                     bool include_tparams = true,
+                     bool include_gqs = true,
+                     std::ostream* pstream = 0) const {
+      std::vector<double> params_r_vec(params_r.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        params_r_vec[i] = params_r(i);
+      std::vector<double> vars_vec;
+      std::vector<int> params_i_vec;
+      write_array(base_rng,params_r_vec,params_i_vec,vars_vec,include_tparams,include_gqs,pstream);
+      vars.resize(vars_vec.size());
+      for (int i = 0; i < vars.size(); ++i)
+        vars(i) = vars_vec[i];
+    }
+
+    static std::string model_name() {
+        return "model_hierarchical_no_correlation_old";
+    }
+
+
+    void constrained_param_names(std::vector<std::string>& param_names__,
+                                 bool include_tparams__ = true,
+                                 bool include_gqs__ = true) const {
+        std::stringstream param_name_stream__;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__ && !include_tparams__) return;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__) return;
+    }
+
+
+    void unconstrained_param_names(std::vector<std::string>& param_names__,
+                                   bool include_tparams__ = true,
+                                   bool include_gqs__ = true) const {
+        std::stringstream param_name_stream__;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__ && !include_tparams__) return;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__) return;
+    }
+
+}; // model
+
+} // namespace
+
+
+
+
+// Code generated by Stan version 2.14
+
+#include <stan/model/model_header.hpp>
+
+namespace model_hierarchical_no_correlation_uniform_priors_namespace {
+
+using std::istream;
+using std::string;
+using std::stringstream;
+using std::vector;
+using stan::io::dump;
+using stan::math::lgamma;
+using stan::model::prob_grad;
+using namespace stan::math;
+
+typedef Eigen::Matrix<double,Eigen::Dynamic,1> vector_d;
+typedef Eigen::Matrix<double,1,Eigen::Dynamic> row_vector_d;
+typedef Eigen::Matrix<double,Eigen::Dynamic,Eigen::Dynamic> matrix_d;
+
+static int current_statement_begin__;
+
+class model_hierarchical_no_correlation_uniform_priors : public prob_grad {
+private:
+    int ndat;
+    int nspecies;
+    double minc;
+    double maxc;
+    vector<double> x;
+    vector<double> t;
+    vector<double> tprec;
+    vector<int> y;
+    vector<int> Nprec;
+    vector<int> species;
+public:
+    model_hierarchical_no_correlation_uniform_priors(stan::io::var_context& context__,
+        std::ostream* pstream__ = 0)
+        : prob_grad(0) {
+        typedef boost::ecuyer1988 rng_t;
+        rng_t base_rng(0);  // 0 seed default
+        ctor_body(context__, base_rng, pstream__);
+    }
+
+    template <class RNG>
+    model_hierarchical_no_correlation_uniform_priors(stan::io::var_context& context__,
+        RNG& base_rng__,
+        std::ostream* pstream__ = 0)
+        : prob_grad(0) {
+        ctor_body(context__, base_rng__, pstream__);
+    }
+
+    template <class RNG>
+    void ctor_body(stan::io::var_context& context__,
+                   RNG& base_rng__,
+                   std::ostream* pstream__) {
+        current_statement_begin__ = -1;
+
+        static const char* function__ = "model_hierarchical_no_correlation_uniform_priors_namespace::model_hierarchical_no_correlation_uniform_priors";
+        (void) function__; // dummy call to supress warning
+        size_t pos__;
+        (void) pos__; // dummy call to supress warning
+        std::vector<int> vals_i__;
+        std::vector<double> vals_r__;
+        double DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        // initialize member variables
+        context__.validate_dims("data initialization", "ndat", "int", context__.to_vec());
+        ndat = int(0);
+        vals_i__ = context__.vals_i("ndat");
+        pos__ = 0;
+        ndat = vals_i__[pos__++];
+        context__.validate_dims("data initialization", "nspecies", "int", context__.to_vec());
+        nspecies = int(0);
+        vals_i__ = context__.vals_i("nspecies");
+        pos__ = 0;
+        nspecies = vals_i__[pos__++];
+        context__.validate_dims("data initialization", "minc", "double", context__.to_vec());
+        minc = double(0);
+        vals_r__ = context__.vals_r("minc");
+        pos__ = 0;
+        minc = vals_r__[pos__++];
+        context__.validate_dims("data initialization", "maxc", "double", context__.to_vec());
+        maxc = double(0);
+        vals_r__ = context__.vals_r("maxc");
+        pos__ = 0;
+        maxc = vals_r__[pos__++];
+        context__.validate_dims("data initialization", "x", "double", context__.to_vec(ndat));
+        validate_non_negative_index("x", "ndat", ndat);
+        x = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("x");
+        pos__ = 0;
+        size_t x_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < x_limit_0__; ++i_0__) {
+            x[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "t", "double", context__.to_vec(ndat));
+        validate_non_negative_index("t", "ndat", ndat);
+        t = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("t");
+        pos__ = 0;
+        size_t t_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < t_limit_0__; ++i_0__) {
+            t[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "tprec", "double", context__.to_vec(ndat));
+        validate_non_negative_index("tprec", "ndat", ndat);
+        tprec = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("tprec");
+        pos__ = 0;
+        size_t tprec_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < tprec_limit_0__; ++i_0__) {
+            tprec[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "y", "int", context__.to_vec(ndat));
+        validate_non_negative_index("y", "ndat", ndat);
+        y = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("y");
+        pos__ = 0;
+        size_t y_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < y_limit_0__; ++i_0__) {
+            y[i_0__] = vals_i__[pos__++];
+        }
+        context__.validate_dims("data initialization", "Nprec", "int", context__.to_vec(ndat));
+        validate_non_negative_index("Nprec", "ndat", ndat);
+        Nprec = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("Nprec");
+        pos__ = 0;
+        size_t Nprec_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < Nprec_limit_0__; ++i_0__) {
+            Nprec[i_0__] = vals_i__[pos__++];
+        }
+        context__.validate_dims("data initialization", "species", "int", context__.to_vec(ndat));
+        validate_non_negative_index("species", "ndat", ndat);
+        species = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("species");
+        pos__ = 0;
+        size_t species_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < species_limit_0__; ++i_0__) {
+            species[i_0__] = vals_i__[pos__++];
+        }
+
+        // validate, data variables
+        check_greater_or_equal(function__,"ndat",ndat,0);
+        check_greater_or_equal(function__,"nspecies",nspecies,0);
+        check_greater_or_equal(function__,"minc",minc,0);
+        check_greater_or_equal(function__,"maxc",maxc,0);
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"x[k0__]",x[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"t[k0__]",t[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"tprec[k0__]",tprec[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"y[k0__]",y[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"Nprec[k0__]",Nprec[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"species[k0__]",species[k0__],0);
+        }
+        // initialize data variables
+
+        try {
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed data
+
+        // set parameter ranges
+        num_params_r__ = 0U;
+        param_ranges_i__.clear();
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        num_params_r__ += nspecies;
+        num_params_r__ += nspecies;
+        num_params_r__ += nspecies;
+        num_params_r__ += nspecies;
+    }
+
+    ~model_hierarchical_no_correlation_uniform_priors() { }
+
+
+    void transform_inits(const stan::io::var_context& context__,
+                         std::vector<int>& params_i__,
+                         std::vector<double>& params_r__,
+                         std::ostream* pstream__) const {
+        stan::io::writer<double> writer__(params_r__,params_i__);
+        size_t pos__;
+        (void) pos__; // dummy call to supress warning
+        std::vector<double> vals_r__;
+        std::vector<int> vals_i__;
+
+        if (!(context__.contains_r("lks_mu")))
+            throw std::runtime_error("variable lks_mu missing");
+        vals_r__ = context__.vals_r("lks_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lks_mu", "double", context__.to_vec());
+        // generate_declaration lks_mu
+        double lks_mu(0);
+        lks_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(-(7),0,lks_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lks_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lNEC_mu")))
+            throw std::runtime_error("variable lNEC_mu missing");
+        vals_r__ = context__.vals_r("lNEC_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_mu", "double", context__.to_vec());
+        // generate_declaration lNEC_mu
+        double lNEC_mu(0);
+        lNEC_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1),lNEC_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lke_mu")))
+            throw std::runtime_error("variable lke_mu missing");
+        vals_r__ = context__.vals_r("lke_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lke_mu", "double", context__.to_vec());
+        // generate_declaration lke_mu
+        double lke_mu(0);
+        lke_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(-(7),0,lke_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lke_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lm0_mu")))
+            throw std::runtime_error("variable lm0_mu missing");
+        vals_r__ = context__.vals_r("lm0_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lm0_mu", "double", context__.to_vec());
+        // generate_declaration lm0_mu
+        double lm0_mu(0);
+        lm0_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(-(7),-(1),lm0_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lm0_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lks_sigma")))
+            throw std::runtime_error("variable lks_sigma missing");
+        vals_r__ = context__.vals_r("lks_sigma");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lks_sigma", "double", context__.to_vec());
+        // generate_declaration lks_sigma
+        double lks_sigma(0);
+        lks_sigma = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,2,lks_sigma);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lks_sigma: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lNEC_sigma")))
+            throw std::runtime_error("variable lNEC_sigma missing");
+        vals_r__ = context__.vals_r("lNEC_sigma");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_sigma", "double", context__.to_vec());
+        // generate_declaration lNEC_sigma
+        double lNEC_sigma(0);
+        lNEC_sigma = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,2,lNEC_sigma);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_sigma: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lke_sigma")))
+            throw std::runtime_error("variable lke_sigma missing");
+        vals_r__ = context__.vals_r("lke_sigma");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lke_sigma", "double", context__.to_vec());
+        // generate_declaration lke_sigma
+        double lke_sigma(0);
+        lke_sigma = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,2,lke_sigma);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lke_sigma: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lm0_sigma")))
+            throw std::runtime_error("variable lm0_sigma missing");
+        vals_r__ = context__.vals_r("lm0_sigma");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lm0_sigma", "double", context__.to_vec());
+        // generate_declaration lm0_sigma
+        double lm0_sigma(0);
+        lm0_sigma = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,2,lm0_sigma);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lm0_sigma: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lm0_raw")))
+            throw std::runtime_error("variable lm0_raw missing");
+        vals_r__ = context__.vals_r("lm0_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lm0_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lm0_raw
+        vector_d lm0_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lm0_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lm0_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lm0_raw: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lks_raw")))
+            throw std::runtime_error("variable lks_raw missing");
+        vals_r__ = context__.vals_r("lks_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lks_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lks_raw
+        vector_d lks_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lks_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lks_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lks_raw: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lNEC_raw")))
+            throw std::runtime_error("variable lNEC_raw missing");
+        vals_r__ = context__.vals_r("lNEC_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lNEC_raw
+        vector_d lNEC_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lNEC_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lNEC_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_raw: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lke_raw")))
+            throw std::runtime_error("variable lke_raw missing");
+        vals_r__ = context__.vals_r("lke_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lke_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lke_raw
+        vector_d lke_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lke_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lke_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lke_raw: ") + e.what());
+        }
+
+        params_r__ = writer__.data_r();
+        params_i__ = writer__.data_i();
+    }
+
+    void transform_inits(const stan::io::var_context& context,
+                         Eigen::Matrix<double,Eigen::Dynamic,1>& params_r,
+                         std::ostream* pstream__) const {
+      std::vector<double> params_r_vec;
+      std::vector<int> params_i_vec;
+      transform_inits(context, params_i_vec, params_r_vec, pstream__);
+      params_r.resize(params_r_vec.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        params_r(i) = params_r_vec[i];
+    }
+
+
+    template <bool propto__, bool jacobian__, typename T__>
+    T__ log_prob(vector<T__>& params_r__,
+                 vector<int>& params_i__,
+                 std::ostream* pstream__ = 0) const {
+
+        T__ DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        T__ lp__(0.0);
+        stan::math::accumulator<T__> lp_accum__;
+
+        // model parameters
+        stan::io::reader<T__> in__(params_r__,params_i__);
+
+        T__ lks_mu;
+        (void) lks_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lks_mu = in__.scalar_lub_constrain(-(7),0,lp__);
+        else
+            lks_mu = in__.scalar_lub_constrain(-(7),0);
+
+        T__ lNEC_mu;
+        (void) lNEC_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1),lp__);
+        else
+            lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1));
+
+        T__ lke_mu;
+        (void) lke_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lke_mu = in__.scalar_lub_constrain(-(7),0,lp__);
+        else
+            lke_mu = in__.scalar_lub_constrain(-(7),0);
+
+        T__ lm0_mu;
+        (void) lm0_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lm0_mu = in__.scalar_lub_constrain(-(7),-(1),lp__);
+        else
+            lm0_mu = in__.scalar_lub_constrain(-(7),-(1));
+
+        T__ lks_sigma;
+        (void) lks_sigma;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lks_sigma = in__.scalar_lub_constrain(0,2,lp__);
+        else
+            lks_sigma = in__.scalar_lub_constrain(0,2);
+
+        T__ lNEC_sigma;
+        (void) lNEC_sigma;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_sigma = in__.scalar_lub_constrain(0,2,lp__);
+        else
+            lNEC_sigma = in__.scalar_lub_constrain(0,2);
+
+        T__ lke_sigma;
+        (void) lke_sigma;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lke_sigma = in__.scalar_lub_constrain(0,2,lp__);
+        else
+            lke_sigma = in__.scalar_lub_constrain(0,2);
+
+        T__ lm0_sigma;
+        (void) lm0_sigma;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lm0_sigma = in__.scalar_lub_constrain(0,2,lp__);
+        else
+            lm0_sigma = in__.scalar_lub_constrain(0,2);
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lm0_raw;
+        (void) lm0_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lm0_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lm0_raw = in__.vector_constrain(nspecies);
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lks_raw;
+        (void) lks_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lks_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lks_raw = in__.vector_constrain(nspecies);
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC_raw;
+        (void) lNEC_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lNEC_raw = in__.vector_constrain(nspecies);
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lke_raw;
+        (void) lke_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lke_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lke_raw = in__.vector_constrain(nspecies);
+
+
+        // transformed parameters
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lm0(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lm0;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0, DUMMY_VAR__);
+        stan::math::fill(lm0,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lks(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lks;  // dummy to suppress unused var warning
+        stan::math::initialize(lks, DUMMY_VAR__);
+        stan::math::fill(lks,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lNEC;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC, DUMMY_VAR__);
+        stan::math::fill(lNEC,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lke(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lke;  // dummy to suppress unused var warning
+        stan::math::initialize(lke, DUMMY_VAR__);
+        stan::math::fill(lke,DUMMY_VAR__);
+
+
+        try {
+            stan::math::assign(lm0, add(lm0_mu,multiply(lm0_sigma,lm0_raw)));
+            stan::math::assign(lks, add(lks_mu,multiply(lks_sigma,lks_raw)));
+            stan::math::assign(lNEC, add(lNEC_mu,multiply(lNEC_sigma,lNEC_raw)));
+            stan::math::assign(lke, add(lke_mu,multiply(lke_sigma,lke_raw)));
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed parameters
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lm0(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lm0" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lks(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lks" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lNEC(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lNEC" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lke(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lke" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+
+        const char* function__ = "validate transformed params";
+        (void) function__;  // dummy to suppress unused var warning
+
+        // model body
+        try {
+            {
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  ks(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) ks;  // dummy to suppress unused var warning
+                stan::math::initialize(ks, DUMMY_VAR__);
+                stan::math::fill(ks,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  NEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) NEC;  // dummy to suppress unused var warning
+                stan::math::initialize(NEC, DUMMY_VAR__);
+                stan::math::fill(NEC,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  ke(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) ke;  // dummy to suppress unused var warning
+                stan::math::initialize(ke, DUMMY_VAR__);
+                stan::math::fill(ke,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  m0(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) m0;  // dummy to suppress unused var warning
+                stan::math::initialize(m0, DUMMY_VAR__);
+                stan::math::fill(m0,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  log_psurv(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) log_psurv;  // dummy to suppress unused var warning
+                stan::math::initialize(log_psurv, DUMMY_VAR__);
+                stan::math::fill(log_psurv,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  psurv(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) psurv;  // dummy to suppress unused var warning
+                stan::math::initialize(psurv, DUMMY_VAR__);
+                stan::math::fill(psurv,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  tNEC(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) tNEC;  // dummy to suppress unused var warning
+                stan::math::initialize(tNEC, DUMMY_VAR__);
+                stan::math::fill(tNEC,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  tref(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) tref;  // dummy to suppress unused var warning
+                stan::math::initialize(tref, DUMMY_VAR__);
+                stan::math::fill(tref,DUMMY_VAR__);
+
+
+                for (int i = 1; i <= nspecies; ++i) {
+
+                    stan::math::assign(get_base1_lhs(m0,i,"m0",1), pow(10.0,get_base1(lm0,i,"lm0",1)));
+                    stan::math::assign(get_base1_lhs(ks,i,"ks",1), pow(10.0,get_base1(lks,i,"lks",1)));
+                    stan::math::assign(get_base1_lhs(NEC,i,"NEC",1), pow(10.0,get_base1(lNEC,i,"lNEC",1)));
+                    stan::math::assign(get_base1_lhs(ke,i,"ke",1), pow(10.0,get_base1(lke,i,"lke",1)));
+                }
+                for (int i = 1; i <= ndat; ++i) {
+
+                    stan::math::assign(get_base1_lhs(log_psurv,i,"log_psurv",1), (-(get_base1(m0,get_base1(species,i,"species",1),"m0",1)) * (get_base1(t,i,"t",1) - get_base1(tprec,i,"tprec",1))));
+                    if (as_bool(logical_gt(get_base1(x,i,"x",1),get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)))) {
+
+                        stan::math::assign(get_base1_lhs(tNEC,i,"tNEC",1), ((-(1) / get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * log((1 - (get_base1(NEC,get_base1(species,i,"species",1),"NEC",1) / get_base1(x,i,"x",1))))));
+                        if (as_bool(logical_gt(get_base1(t,i,"t",1),get_base1(tNEC,i,"tNEC",1)))) {
+
+                            stan::math::assign(get_base1_lhs(tref,i,"tref",1), stan::math::fmax(get_base1(tprec,i,"tprec",1),get_base1(tNEC,i,"tNEC",1)));
+                            stan::math::assign(get_base1_lhs(log_psurv,i,"log_psurv",1), (get_base1(log_psurv,i,"log_psurv",1) - (get_base1(ks,get_base1(species,i,"species",1),"ks",1) * (((get_base1(x,i,"x",1) - get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)) * (get_base1(t,i,"t",1) - get_base1(tref,i,"tref",1))) + ((((1 / get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(x,i,"x",1)) * exp((-(get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * get_base1(tref,i,"tref",1)))) * (exp((-(get_base1(ke,get_base1(species,i,"species",1),"ke",1)) * (get_base1(t,i,"t",1) - get_base1(tref,i,"tref",1)))) - 1))))));
+                        }
+                    }
+                    stan::math::assign(get_base1_lhs(psurv,i,"psurv",1), exp(get_base1(log_psurv,i,"log_psurv",1)));
+                }
+                lp_accum__.add(normal_log<propto__>(lks_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lNEC_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lke_raw, 0, 1));
+                lp_accum__.add(normal_log<propto__>(lm0_raw, 0, 1));
+                lp_accum__.add(binomial_log<propto__>(y, Nprec, psurv));
+            }
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        lp_accum__.add(lp__);
+        return lp_accum__.sum();
+
+    } // log_prob()
+
+    template <bool propto, bool jacobian, typename T_>
+    T_ log_prob(Eigen::Matrix<T_,Eigen::Dynamic,1>& params_r,
+               std::ostream* pstream = 0) const {
+      std::vector<T_> vec_params_r;
+      vec_params_r.reserve(params_r.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        vec_params_r.push_back(params_r(i));
+      std::vector<int> vec_params_i;
+      return log_prob<propto,jacobian,T_>(vec_params_r, vec_params_i, pstream);
+    }
+
+
+    void get_param_names(std::vector<std::string>& names__) const {
+        names__.resize(0);
+        names__.push_back("lks_mu");
+        names__.push_back("lNEC_mu");
+        names__.push_back("lke_mu");
+        names__.push_back("lm0_mu");
+        names__.push_back("lks_sigma");
+        names__.push_back("lNEC_sigma");
+        names__.push_back("lke_sigma");
+        names__.push_back("lm0_sigma");
+        names__.push_back("lm0_raw");
+        names__.push_back("lks_raw");
+        names__.push_back("lNEC_raw");
+        names__.push_back("lke_raw");
+        names__.push_back("lm0");
+        names__.push_back("lks");
+        names__.push_back("lNEC");
+        names__.push_back("lke");
+    }
+
+
+    void get_dims(std::vector<std::vector<size_t> >& dimss__) const {
+        dimss__.resize(0);
+        std::vector<size_t> dims__;
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+    }
+
+    template <typename RNG>
+    void write_array(RNG& base_rng__,
+                     std::vector<double>& params_r__,
+                     std::vector<int>& params_i__,
+                     std::vector<double>& vars__,
+                     bool include_tparams__ = true,
+                     bool include_gqs__ = true,
+                     std::ostream* pstream__ = 0) const {
+        vars__.resize(0);
+        stan::io::reader<double> in__(params_r__,params_i__);
+        static const char* function__ = "model_hierarchical_no_correlation_uniform_priors_namespace::write_array";
+        (void) function__; // dummy call to supress warning
+        // read-transform, write parameters
+        double lks_mu = in__.scalar_lub_constrain(-(7),0);
+        double lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1));
+        double lke_mu = in__.scalar_lub_constrain(-(7),0);
+        double lm0_mu = in__.scalar_lub_constrain(-(7),-(1));
+        double lks_sigma = in__.scalar_lub_constrain(0,2);
+        double lNEC_sigma = in__.scalar_lub_constrain(0,2);
+        double lke_sigma = in__.scalar_lub_constrain(0,2);
+        double lm0_sigma = in__.scalar_lub_constrain(0,2);
+        vector_d lm0_raw = in__.vector_constrain(nspecies);
+        vector_d lks_raw = in__.vector_constrain(nspecies);
+        vector_d lNEC_raw = in__.vector_constrain(nspecies);
+        vector_d lke_raw = in__.vector_constrain(nspecies);
+        vars__.push_back(lks_mu);
+        vars__.push_back(lNEC_mu);
+        vars__.push_back(lke_mu);
+        vars__.push_back(lm0_mu);
+        vars__.push_back(lks_sigma);
+        vars__.push_back(lNEC_sigma);
+        vars__.push_back(lke_sigma);
+        vars__.push_back(lm0_sigma);
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lm0_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lks_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lNEC_raw[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lke_raw[k_0__]);
+        }
+
+        if (!include_tparams__) return;
+        // declare and define transformed parameters
+        double lp__ = 0.0;
+        (void) lp__; // dummy call to supress warning
+        stan::math::accumulator<double> lp_accum__;
+
+        double DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        vector_d lm0(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lm0;  // dummy to suppress unused var warning
+        stan::math::initialize(lm0, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lm0,DUMMY_VAR__);
+        vector_d lks(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lks;  // dummy to suppress unused var warning
+        stan::math::initialize(lks, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lks,DUMMY_VAR__);
+        vector_d lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lNEC;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lNEC,DUMMY_VAR__);
+        vector_d lke(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lke;  // dummy to suppress unused var warning
+        stan::math::initialize(lke, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lke,DUMMY_VAR__);
+
+
+        try {
+            stan::math::assign(lm0, add(lm0_mu,multiply(lm0_sigma,lm0_raw)));
+            stan::math::assign(lks, add(lks_mu,multiply(lks_sigma,lks_raw)));
+            stan::math::assign(lNEC, add(lNEC_mu,multiply(lNEC_sigma,lNEC_raw)));
+            stan::math::assign(lke, add(lke_mu,multiply(lke_sigma,lke_raw)));
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed parameters
+
+        // write transformed parameters
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lm0[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lks[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lNEC[k_0__]);
+        }
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lke[k_0__]);
+        }
+
+        if (!include_gqs__) return;
+        // declare and define generated quantities
+
+
+        try {
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate generated quantities
+
+        // write generated quantities
+    }
+
+    template <typename RNG>
+    void write_array(RNG& base_rng,
+                     Eigen::Matrix<double,Eigen::Dynamic,1>& params_r,
+                     Eigen::Matrix<double,Eigen::Dynamic,1>& vars,
+                     bool include_tparams = true,
+                     bool include_gqs = true,
+                     std::ostream* pstream = 0) const {
+      std::vector<double> params_r_vec(params_r.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        params_r_vec[i] = params_r(i);
+      std::vector<double> vars_vec;
+      std::vector<int> params_i_vec;
+      write_array(base_rng,params_r_vec,params_i_vec,vars_vec,include_tparams,include_gqs,pstream);
+      vars.resize(vars_vec.size());
+      for (int i = 0; i < vars.size(); ++i)
+        vars(i) = vars_vec[i];
+    }
+
+    static std::string model_name() {
+        return "model_hierarchical_no_correlation_uniform_priors";
+    }
+
+
+    void constrained_param_names(std::vector<std::string>& param_names__,
+                                 bool include_tparams__ = true,
+                                 bool include_gqs__ = true) const {
+        std::stringstream param_name_stream__;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lks_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lke_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lm0_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__ && !include_tparams__) return;
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
 
         if (!include_gqs__) return;
     }
@@ -839,6 +3156,28 @@ public:
         param_names__.push_back(param_name_stream__.str());
         for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
             param_name_stream__.str(std::string());
+            param_name_stream__ << "lm0_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lks_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lke_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__ && !include_tparams__) return;
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
             param_name_stream__ << "lm0" << '.' << k_0__;
             param_names__.push_back(param_name_stream__.str());
         }
@@ -858,7 +3197,694 @@ public:
             param_names__.push_back(param_name_stream__.str());
         }
 
+        if (!include_gqs__) return;
+    }
+
+}; // model
+
+} // namespace
+
+
+
+
+// Code generated by Stan version 2.14
+
+#include <stan/model/model_header.hpp>
+
+namespace model_hierarchical_only_NEC_varies_namespace {
+
+using std::istream;
+using std::string;
+using std::stringstream;
+using std::vector;
+using stan::io::dump;
+using stan::math::lgamma;
+using stan::model::prob_grad;
+using namespace stan::math;
+
+typedef Eigen::Matrix<double,Eigen::Dynamic,1> vector_d;
+typedef Eigen::Matrix<double,1,Eigen::Dynamic> row_vector_d;
+typedef Eigen::Matrix<double,Eigen::Dynamic,Eigen::Dynamic> matrix_d;
+
+static int current_statement_begin__;
+
+class model_hierarchical_only_NEC_varies : public prob_grad {
+private:
+    int ndat;
+    int nspecies;
+    double minc;
+    double maxc;
+    vector<double> x;
+    vector<double> t;
+    vector<double> tprec;
+    vector<int> y;
+    vector<int> Nprec;
+    vector<int> species;
+public:
+    model_hierarchical_only_NEC_varies(stan::io::var_context& context__,
+        std::ostream* pstream__ = 0)
+        : prob_grad(0) {
+        typedef boost::ecuyer1988 rng_t;
+        rng_t base_rng(0);  // 0 seed default
+        ctor_body(context__, base_rng, pstream__);
+    }
+
+    template <class RNG>
+    model_hierarchical_only_NEC_varies(stan::io::var_context& context__,
+        RNG& base_rng__,
+        std::ostream* pstream__ = 0)
+        : prob_grad(0) {
+        ctor_body(context__, base_rng__, pstream__);
+    }
+
+    template <class RNG>
+    void ctor_body(stan::io::var_context& context__,
+                   RNG& base_rng__,
+                   std::ostream* pstream__) {
+        current_statement_begin__ = -1;
+
+        static const char* function__ = "model_hierarchical_only_NEC_varies_namespace::model_hierarchical_only_NEC_varies";
+        (void) function__; // dummy call to supress warning
+        size_t pos__;
+        (void) pos__; // dummy call to supress warning
+        std::vector<int> vals_i__;
+        std::vector<double> vals_r__;
+        double DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        // initialize member variables
+        context__.validate_dims("data initialization", "ndat", "int", context__.to_vec());
+        ndat = int(0);
+        vals_i__ = context__.vals_i("ndat");
+        pos__ = 0;
+        ndat = vals_i__[pos__++];
+        context__.validate_dims("data initialization", "nspecies", "int", context__.to_vec());
+        nspecies = int(0);
+        vals_i__ = context__.vals_i("nspecies");
+        pos__ = 0;
+        nspecies = vals_i__[pos__++];
+        context__.validate_dims("data initialization", "minc", "double", context__.to_vec());
+        minc = double(0);
+        vals_r__ = context__.vals_r("minc");
+        pos__ = 0;
+        minc = vals_r__[pos__++];
+        context__.validate_dims("data initialization", "maxc", "double", context__.to_vec());
+        maxc = double(0);
+        vals_r__ = context__.vals_r("maxc");
+        pos__ = 0;
+        maxc = vals_r__[pos__++];
+        context__.validate_dims("data initialization", "x", "double", context__.to_vec(ndat));
+        validate_non_negative_index("x", "ndat", ndat);
+        x = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("x");
+        pos__ = 0;
+        size_t x_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < x_limit_0__; ++i_0__) {
+            x[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "t", "double", context__.to_vec(ndat));
+        validate_non_negative_index("t", "ndat", ndat);
+        t = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("t");
+        pos__ = 0;
+        size_t t_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < t_limit_0__; ++i_0__) {
+            t[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "tprec", "double", context__.to_vec(ndat));
+        validate_non_negative_index("tprec", "ndat", ndat);
+        tprec = std::vector<double>(ndat,double(0));
+        vals_r__ = context__.vals_r("tprec");
+        pos__ = 0;
+        size_t tprec_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < tprec_limit_0__; ++i_0__) {
+            tprec[i_0__] = vals_r__[pos__++];
+        }
+        context__.validate_dims("data initialization", "y", "int", context__.to_vec(ndat));
+        validate_non_negative_index("y", "ndat", ndat);
+        y = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("y");
+        pos__ = 0;
+        size_t y_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < y_limit_0__; ++i_0__) {
+            y[i_0__] = vals_i__[pos__++];
+        }
+        context__.validate_dims("data initialization", "Nprec", "int", context__.to_vec(ndat));
+        validate_non_negative_index("Nprec", "ndat", ndat);
+        Nprec = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("Nprec");
+        pos__ = 0;
+        size_t Nprec_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < Nprec_limit_0__; ++i_0__) {
+            Nprec[i_0__] = vals_i__[pos__++];
+        }
+        context__.validate_dims("data initialization", "species", "int", context__.to_vec(ndat));
+        validate_non_negative_index("species", "ndat", ndat);
+        species = std::vector<int>(ndat,int(0));
+        vals_i__ = context__.vals_i("species");
+        pos__ = 0;
+        size_t species_limit_0__ = ndat;
+        for (size_t i_0__ = 0; i_0__ < species_limit_0__; ++i_0__) {
+            species[i_0__] = vals_i__[pos__++];
+        }
+
+        // validate, data variables
+        check_greater_or_equal(function__,"ndat",ndat,0);
+        check_greater_or_equal(function__,"nspecies",nspecies,0);
+        check_greater_or_equal(function__,"minc",minc,0);
+        check_greater_or_equal(function__,"maxc",maxc,0);
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"x[k0__]",x[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"t[k0__]",t[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"tprec[k0__]",tprec[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"y[k0__]",y[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"Nprec[k0__]",Nprec[k0__],0);
+        }
+        for (int k0__ = 0; k0__ < ndat; ++k0__) {
+            check_greater_or_equal(function__,"species[k0__]",species[k0__],0);
+        }
+        // initialize data variables
+
+        try {
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed data
+
+        // set parameter ranges
+        num_params_r__ = 0U;
+        param_ranges_i__.clear();
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        ++num_params_r__;
+        num_params_r__ += nspecies;
+    }
+
+    ~model_hierarchical_only_NEC_varies() { }
+
+
+    void transform_inits(const stan::io::var_context& context__,
+                         std::vector<int>& params_i__,
+                         std::vector<double>& params_r__,
+                         std::ostream* pstream__) const {
+        stan::io::writer<double> writer__(params_r__,params_i__);
+        size_t pos__;
+        (void) pos__; // dummy call to supress warning
+        std::vector<double> vals_r__;
+        std::vector<int> vals_i__;
+
+        if (!(context__.contains_r("lNEC_mu")))
+            throw std::runtime_error("variable lNEC_mu missing");
+        vals_r__ = context__.vals_r("lNEC_mu");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_mu", "double", context__.to_vec());
+        // generate_declaration lNEC_mu
+        double lNEC_mu(0);
+        lNEC_mu = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1),lNEC_mu);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_mu: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lNEC_sigma_unif")))
+            throw std::runtime_error("variable lNEC_sigma_unif missing");
+        vals_r__ = context__.vals_r("lNEC_sigma_unif");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_sigma_unif", "double", context__.to_vec());
+        // generate_declaration lNEC_sigma_unif
+        double lNEC_sigma_unif(0);
+        lNEC_sigma_unif = vals_r__[pos__++];
+        try {
+            writer__.scalar_lub_unconstrain(0,(stan::math::pi() / 2),lNEC_sigma_unif);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_sigma_unif: ") + e.what());
+        }
+
+        if (!(context__.contains_r("m0")))
+            throw std::runtime_error("variable m0 missing");
+        vals_r__ = context__.vals_r("m0");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "m0", "double", context__.to_vec());
+        // generate_declaration m0
+        double m0(0);
+        m0 = vals_r__[pos__++];
+        try {
+            writer__.scalar_lb_unconstrain(0,m0);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable m0: ") + e.what());
+        }
+
+        if (!(context__.contains_r("ks")))
+            throw std::runtime_error("variable ks missing");
+        vals_r__ = context__.vals_r("ks");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "ks", "double", context__.to_vec());
+        // generate_declaration ks
+        double ks(0);
+        ks = vals_r__[pos__++];
+        try {
+            writer__.scalar_lb_unconstrain(0,ks);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable ks: ") + e.what());
+        }
+
+        if (!(context__.contains_r("ke")))
+            throw std::runtime_error("variable ke missing");
+        vals_r__ = context__.vals_r("ke");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "ke", "double", context__.to_vec());
+        // generate_declaration ke
+        double ke(0);
+        ke = vals_r__[pos__++];
+        try {
+            writer__.scalar_lb_unconstrain(0,ke);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable ke: ") + e.what());
+        }
+
+        if (!(context__.contains_r("lNEC_raw")))
+            throw std::runtime_error("variable lNEC_raw missing");
+        vals_r__ = context__.vals_r("lNEC_raw");
+        pos__ = 0U;
+        context__.validate_dims("initialization", "lNEC_raw", "vector_d", context__.to_vec(nspecies));
+        // generate_declaration lNEC_raw
+        vector_d lNEC_raw(static_cast<Eigen::VectorXd::Index>(nspecies));
+        for (int j1__ = 0U; j1__ < nspecies; ++j1__)
+            lNEC_raw(j1__) = vals_r__[pos__++];
+        try {
+            writer__.vector_unconstrain(lNEC_raw);
+        } catch (const std::exception& e) { 
+            throw std::runtime_error(std::string("Error transforming variable lNEC_raw: ") + e.what());
+        }
+
+        params_r__ = writer__.data_r();
+        params_i__ = writer__.data_i();
+    }
+
+    void transform_inits(const stan::io::var_context& context,
+                         Eigen::Matrix<double,Eigen::Dynamic,1>& params_r,
+                         std::ostream* pstream__) const {
+      std::vector<double> params_r_vec;
+      std::vector<int> params_i_vec;
+      transform_inits(context, params_i_vec, params_r_vec, pstream__);
+      params_r.resize(params_r_vec.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        params_r(i) = params_r_vec[i];
+    }
+
+
+    template <bool propto__, bool jacobian__, typename T__>
+    T__ log_prob(vector<T__>& params_r__,
+                 vector<int>& params_i__,
+                 std::ostream* pstream__ = 0) const {
+
+        T__ DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        T__ lp__(0.0);
+        stan::math::accumulator<T__> lp_accum__;
+
+        // model parameters
+        stan::io::reader<T__> in__(params_r__,params_i__);
+
+        T__ lNEC_mu;
+        (void) lNEC_mu;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1),lp__);
+        else
+            lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1));
+
+        T__ lNEC_sigma_unif;
+        (void) lNEC_sigma_unif;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2),lp__);
+        else
+            lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+
+        T__ m0;
+        (void) m0;  // dummy to suppress unused var warning
+        if (jacobian__)
+            m0 = in__.scalar_lb_constrain(0,lp__);
+        else
+            m0 = in__.scalar_lb_constrain(0);
+
+        T__ ks;
+        (void) ks;  // dummy to suppress unused var warning
+        if (jacobian__)
+            ks = in__.scalar_lb_constrain(0,lp__);
+        else
+            ks = in__.scalar_lb_constrain(0);
+
+        T__ ke;
+        (void) ke;  // dummy to suppress unused var warning
+        if (jacobian__)
+            ke = in__.scalar_lb_constrain(0,lp__);
+        else
+            ke = in__.scalar_lb_constrain(0);
+
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC_raw;
+        (void) lNEC_raw;  // dummy to suppress unused var warning
+        if (jacobian__)
+            lNEC_raw = in__.vector_constrain(nspecies,lp__);
+        else
+            lNEC_raw = in__.vector_constrain(nspecies);
+
+
+        // transformed parameters
+        T__ lNEC_sigma;
+        (void) lNEC_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC_sigma, DUMMY_VAR__);
+        stan::math::fill(lNEC_sigma,DUMMY_VAR__);
+        Eigen::Matrix<T__,Eigen::Dynamic,1>  lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lNEC;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC, DUMMY_VAR__);
+        stan::math::fill(lNEC,DUMMY_VAR__);
+
+
+        try {
+            stan::math::assign(lNEC_sigma, (0.5 * tan(lNEC_sigma_unif)));
+            stan::math::assign(lNEC, add(lNEC_mu,multiply(lNEC_sigma,lNEC_raw)));
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed parameters
+        if (stan::math::is_uninitialized(lNEC_sigma)) {
+            std::stringstream msg__;
+            msg__ << "Undefined transformed parameter: lNEC_sigma";
+            throw std::runtime_error(msg__.str());
+        }
+        for (int i0__ = 0; i0__ < nspecies; ++i0__) {
+            if (stan::math::is_uninitialized(lNEC(i0__))) {
+                std::stringstream msg__;
+                msg__ << "Undefined transformed parameter: lNEC" << '[' << i0__ << ']';
+                throw std::runtime_error(msg__.str());
+            }
+        }
+
+        const char* function__ = "validate transformed params";
+        (void) function__;  // dummy to suppress unused var warning
+
+        // model body
+        try {
+            {
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  NEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+                (void) NEC;  // dummy to suppress unused var warning
+                stan::math::initialize(NEC, DUMMY_VAR__);
+                stan::math::fill(NEC,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  log_psurv(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) log_psurv;  // dummy to suppress unused var warning
+                stan::math::initialize(log_psurv, DUMMY_VAR__);
+                stan::math::fill(log_psurv,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  psurv(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) psurv;  // dummy to suppress unused var warning
+                stan::math::initialize(psurv, DUMMY_VAR__);
+                stan::math::fill(psurv,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  tNEC(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) tNEC;  // dummy to suppress unused var warning
+                stan::math::initialize(tNEC, DUMMY_VAR__);
+                stan::math::fill(tNEC,DUMMY_VAR__);
+                Eigen::Matrix<T__,Eigen::Dynamic,1>  tref(static_cast<Eigen::VectorXd::Index>(ndat));
+                (void) tref;  // dummy to suppress unused var warning
+                stan::math::initialize(tref, DUMMY_VAR__);
+                stan::math::fill(tref,DUMMY_VAR__);
+
+
+                for (int i = 1; i <= nspecies; ++i) {
+
+                    stan::math::assign(get_base1_lhs(NEC,i,"NEC",1), pow(10.0,get_base1(lNEC,i,"lNEC",1)));
+                }
+                for (int i = 1; i <= ndat; ++i) {
+
+                    stan::math::assign(get_base1_lhs(log_psurv,i,"log_psurv",1), (-(m0) * (get_base1(t,i,"t",1) - get_base1(tprec,i,"tprec",1))));
+                    if (as_bool(logical_gt(get_base1(x,i,"x",1),get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)))) {
+
+                        stan::math::assign(get_base1_lhs(tNEC,i,"tNEC",1), ((-(1) / ke) * log((1 - (get_base1(NEC,get_base1(species,i,"species",1),"NEC",1) / get_base1(x,i,"x",1))))));
+                        if (as_bool(logical_gt(get_base1(t,i,"t",1),get_base1(tNEC,i,"tNEC",1)))) {
+
+                            stan::math::assign(get_base1_lhs(tref,i,"tref",1), stan::math::fmax(get_base1(tprec,i,"tprec",1),get_base1(tNEC,i,"tNEC",1)));
+                            stan::math::assign(get_base1_lhs(log_psurv,i,"log_psurv",1), (get_base1(log_psurv,i,"log_psurv",1) - (ks * (((get_base1(x,i,"x",1) - get_base1(NEC,get_base1(species,i,"species",1),"NEC",1)) * (get_base1(t,i,"t",1) - get_base1(tref,i,"tref",1))) + ((((1 / ke) * get_base1(x,i,"x",1)) * exp((-(ke) * get_base1(tref,i,"tref",1)))) * (exp((-(ke) * (get_base1(t,i,"t",1) - get_base1(tref,i,"tref",1)))) - 1))))));
+                        }
+                    }
+                    stan::math::assign(get_base1_lhs(psurv,i,"psurv",1), exp(get_base1(log_psurv,i,"log_psurv",1)));
+                }
+                lp_accum__.add(normal_log<propto__>(lNEC_raw, 0, 1));
+                lp_accum__.add(lognormal_log<propto__>(m0, -(4), 0.5));
+                lp_accum__.add(lognormal_log<propto__>(ke, -(4), 0.5));
+                lp_accum__.add(lognormal_log<propto__>(ks, -(4), 1));
+                lp_accum__.add(binomial_log<propto__>(y, Nprec, psurv));
+            }
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        lp_accum__.add(lp__);
+        return lp_accum__.sum();
+
+    } // log_prob()
+
+    template <bool propto, bool jacobian, typename T_>
+    T_ log_prob(Eigen::Matrix<T_,Eigen::Dynamic,1>& params_r,
+               std::ostream* pstream = 0) const {
+      std::vector<T_> vec_params_r;
+      vec_params_r.reserve(params_r.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        vec_params_r.push_back(params_r(i));
+      std::vector<int> vec_params_i;
+      return log_prob<propto,jacobian,T_>(vec_params_r, vec_params_i, pstream);
+    }
+
+
+    void get_param_names(std::vector<std::string>& names__) const {
+        names__.resize(0);
+        names__.push_back("lNEC_mu");
+        names__.push_back("lNEC_sigma_unif");
+        names__.push_back("m0");
+        names__.push_back("ks");
+        names__.push_back("ke");
+        names__.push_back("lNEC_raw");
+        names__.push_back("lNEC_sigma");
+        names__.push_back("lNEC");
+    }
+
+
+    void get_dims(std::vector<std::vector<size_t> >& dimss__) const {
+        dimss__.resize(0);
+        std::vector<size_t> dims__;
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dimss__.push_back(dims__);
+        dims__.resize(0);
+        dims__.push_back(nspecies);
+        dimss__.push_back(dims__);
+    }
+
+    template <typename RNG>
+    void write_array(RNG& base_rng__,
+                     std::vector<double>& params_r__,
+                     std::vector<int>& params_i__,
+                     std::vector<double>& vars__,
+                     bool include_tparams__ = true,
+                     bool include_gqs__ = true,
+                     std::ostream* pstream__ = 0) const {
+        vars__.resize(0);
+        stan::io::reader<double> in__(params_r__,params_i__);
+        static const char* function__ = "model_hierarchical_only_NEC_varies_namespace::write_array";
+        (void) function__; // dummy call to supress warning
+        // read-transform, write parameters
+        double lNEC_mu = in__.scalar_lub_constrain(((log(minc) / log(10)) - 1),((log(maxc) / log(10)) + 1));
+        double lNEC_sigma_unif = in__.scalar_lub_constrain(0,(stan::math::pi() / 2));
+        double m0 = in__.scalar_lb_constrain(0);
+        double ks = in__.scalar_lb_constrain(0);
+        double ke = in__.scalar_lb_constrain(0);
+        vector_d lNEC_raw = in__.vector_constrain(nspecies);
+        vars__.push_back(lNEC_mu);
+        vars__.push_back(lNEC_sigma_unif);
+        vars__.push_back(m0);
+        vars__.push_back(ks);
+        vars__.push_back(ke);
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lNEC_raw[k_0__]);
+        }
+
+        if (!include_tparams__) return;
+        // declare and define transformed parameters
+        double lp__ = 0.0;
+        (void) lp__; // dummy call to supress warning
+        stan::math::accumulator<double> lp_accum__;
+
+        double DUMMY_VAR__(std::numeric_limits<double>::quiet_NaN());
+        (void) DUMMY_VAR__;  // suppress unused var warning
+
+        double lNEC_sigma(0.0);
+        (void) lNEC_sigma;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC_sigma, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lNEC_sigma,DUMMY_VAR__);
+        vector_d lNEC(static_cast<Eigen::VectorXd::Index>(nspecies));
+        (void) lNEC;  // dummy to suppress unused var warning
+        stan::math::initialize(lNEC, std::numeric_limits<double>::quiet_NaN());
+        stan::math::fill(lNEC,DUMMY_VAR__);
+
+
+        try {
+            stan::math::assign(lNEC_sigma, (0.5 * tan(lNEC_sigma_unif)));
+            stan::math::assign(lNEC, add(lNEC_mu,multiply(lNEC_sigma,lNEC_raw)));
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate transformed parameters
+
+        // write transformed parameters
+        vars__.push_back(lNEC_sigma);
+        for (int k_0__ = 0; k_0__ < nspecies; ++k_0__) {
+            vars__.push_back(lNEC[k_0__]);
+        }
+
+        if (!include_gqs__) return;
+        // declare and define generated quantities
+
+
+        try {
+        } catch (const std::exception& e) {
+            stan::lang::rethrow_located(e,current_statement_begin__);
+            // Next line prevents compiler griping about no return
+            throw std::runtime_error("*** IF YOU SEE THIS, PLEASE REPORT A BUG ***");
+        }
+
+        // validate generated quantities
+
+        // write generated quantities
+    }
+
+    template <typename RNG>
+    void write_array(RNG& base_rng,
+                     Eigen::Matrix<double,Eigen::Dynamic,1>& params_r,
+                     Eigen::Matrix<double,Eigen::Dynamic,1>& vars,
+                     bool include_tparams = true,
+                     bool include_gqs = true,
+                     std::ostream* pstream = 0) const {
+      std::vector<double> params_r_vec(params_r.size());
+      for (int i = 0; i < params_r.size(); ++i)
+        params_r_vec[i] = params_r(i);
+      std::vector<double> vars_vec;
+      std::vector<int> params_i_vec;
+      write_array(base_rng,params_r_vec,params_i_vec,vars_vec,include_tparams,include_gqs,pstream);
+      vars.resize(vars_vec.size());
+      for (int i = 0; i < vars.size(); ++i)
+        vars(i) = vars_vec[i];
+    }
+
+    static std::string model_name() {
+        return "model_hierarchical_only_NEC_varies";
+    }
+
+
+    void constrained_param_names(std::vector<std::string>& param_names__,
+                                 bool include_tparams__ = true,
+                                 bool include_gqs__ = true) const {
+        std::stringstream param_name_stream__;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "m0";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "ks";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "ke";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
         if (!include_gqs__ && !include_tparams__) return;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__) return;
+    }
+
+
+    void unconstrained_param_names(std::vector<std::string>& param_names__,
+                                   bool include_tparams__ = true,
+                                   bool include_gqs__ = true) const {
+        std::stringstream param_name_stream__;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_mu";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma_unif";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "m0";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "ks";
+        param_names__.push_back(param_name_stream__.str());
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "ke";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC_raw" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
+
+        if (!include_gqs__ && !include_tparams__) return;
+        param_name_stream__.str(std::string());
+        param_name_stream__ << "lNEC_sigma";
+        param_names__.push_back(param_name_stream__.str());
+        for (int k_0__ = 1; k_0__ <= nspecies; ++k_0__) {
+            param_name_stream__.str(std::string());
+            param_name_stream__ << "lNEC" << '.' << k_0__;
+            param_names__.push_back(param_name_stream__.str());
+        }
 
         if (!include_gqs__) return;
     }

@@ -124,8 +124,7 @@ preprocess_long_dataset = function(long_dataset){
     mutate(number_alive = as.numeric(number_alive)) %>%
     subset(!is.na(number_alive)) %>%
     add_prec_time_and_number %>%
-    compute_effective_number_of_individuals %>%
-    mutate(species = Identifier)
+    compute_effective_number_of_individuals
 }
 
 make_time_col_name_time_stamp_converter = function(time_col_names, time_stamps){
@@ -145,7 +144,8 @@ convert_to_long_dataset = function(raw_wide_dataset, concentration_col, species_
     mutate(test_id = seq_along(concentration)) %>%
     gather_("time", "number_alive", time_col_names) %>%
     mutate(time = time_col_name_time_stamp_converter(time) %>% as.numeric()) %>%
-    subset(!is.na(number_alive))
+    subset(!is.na(number_alive)) %>%
+    mutate_(species = species_col)
 }
 
 #' @export

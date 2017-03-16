@@ -21,14 +21,14 @@ parameters {
   real<lower=log(minc)/log(10)-1,upper=log(maxc)/log(10)+1> lNEC_mu;
   real<lower=-7,upper=0> lke_mu;
   real<lower = -7, upper = -1> lm0_mu;
-  # real<lower = 0, upper = 2> lks_sigma;
-  # real<lower = 0, upper = 2> lNEC_sigma;
-  # real<lower = 0, upper = 2> lke_sigma;
-  # real<lower = 0, upper = 2> lm0_sigma;
-  real<lower = 0, upper = pi()/2> lks_sigma_unif;
-  real<lower = 0, upper = pi()/2> lNEC_sigma_unif;
-  real<lower = 0, upper = pi()/2> lke_sigma_unif;
-  real<lower = 0, upper = pi()/2> lm0_sigma_unif;
+  real<lower = 0, upper = 2> lks_sigma;
+  real<lower = 0, upper = 2> lNEC_sigma;
+  real<lower = 0, upper = 2> lke_sigma;
+  real<lower = 0, upper = 2> lm0_sigma;
+  // real<lower = 0, upper = pi()/2> lks_sigma_unif;
+  // real<lower = 0, upper = pi()/2> lNEC_sigma_unif;
+  // real<lower = 0, upper = pi()/2> lke_sigma_unif;
+  // real<lower = 0, upper = pi()/2> lm0_sigma_unif;
   vector[nspecies] lm0_raw;
   vector[nspecies] lks_raw;
   vector[nspecies] lNEC_raw;
@@ -36,20 +36,20 @@ parameters {
 }
 
 transformed parameters {
-  real lks_sigma;
-  real lNEC_sigma;
-  real lke_sigma;
-  real lm0_sigma;
+  // real lks_sigma;
+  // real lNEC_sigma;
+  // real lke_sigma;
+  // real lm0_sigma;
 
   vector[nspecies] lm0;
   vector[nspecies] lks;
   vector[nspecies] lNEC;
   vector[nspecies] lke;
 
-  lks_sigma = 0.5 * tan(lks_sigma_unif); // lks_sigma sim cauchy(0,0.5)
-  lNEC_sigma = 0.5 * tan(lNEC_sigma_unif);
-  lke_sigma = 0.5 * tan(lke_sigma_unif);
-  lm0_sigma = 0.5 * tan(lm0_sigma_unif);
+  // lks_sigma = 0.5 * tan(lks_sigma_unif); // lks_sigma sim cauchy(0,0.5)
+  // lNEC_sigma = 0.5 * tan(lNEC_sigma_unif);
+  // lke_sigma = 0.5 * tan(lke_sigma_unif);
+  // lm0_sigma = 0.5 * tan(lm0_sigma_unif);
 
   lm0 = lm0_mu + lm0_sigma * lm0_raw;
   lks = lks_mu + lks_sigma * lks_raw;

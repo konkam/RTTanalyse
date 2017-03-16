@@ -17,6 +17,7 @@
 #'
 #'dataset %>%
 #'    rename()
+#' @export
 rename_dataset <- function(dataset,
                            concentration_col_name,
                            time_col_name,

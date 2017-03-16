@@ -20,3 +20,11 @@ height is the smallest component probability mass in the HDI
 \description{
 Kruschke, J. (2014). Doing Bayesian data analysis: A tutorial introduction with R, 2nd Ed. Academic Press.
 }
+\examples{
+For determining HDI of a beta(30,12) distribution
+approximated on a grid:
+  probDensityVec = dbeta( seq(0,1,length=201) , 30 , 12 )
+ probMassVec = probDensityVec / sum( probDensityVec )
+  HDIinfo = HDIofGrid( probMassVec )
+  show( HDIinfo )
+}
