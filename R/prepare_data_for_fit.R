@@ -67,7 +67,7 @@ prepare_dat = function(preprocessed_dataset){
                 m0_max = -1/min(x$time) * log(0.5),
                 m0_min = -1/max(x$time) * log(0.99),
                 ke_max = -1/min(x$time) * log(0.001),
-                ke_min = -1/min(x$time) * log(0.999)
+                ke_min = -1/max(x$time) * log(0.999)
           ) %>%
             (function(lst){
               append(lst,

@@ -9,7 +9,7 @@ find_closest_strings(strings_, quantile_ = 0.01)
 \arguments{
 \item{strings_}{A vector of strings. If the vector contain duplicates strings, they will be removed.}
 
-\item{quantile_}{Proportion of the closest pairs of strings to return. For quantile_ = 0.1, the 10 percent best pairs are returned.}
+\item{quantile_}{Proportion of the closest pairs of strings to return. For quantile_ = 0.1, the best 10 percent pairs are returned.}
 }
 \value{
 A matrix containing the "quantile_" closest pairs of strings.

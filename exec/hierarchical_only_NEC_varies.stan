@@ -18,7 +18,7 @@ data {
 }
 
 parameters {
-  real<lower=log(minc)/log(10)-1,upper=log(maxc)/log(10)+1> lNEC_mu;
+  real<lower=log10(minc)-1,upper=log10(maxc)+1> lNEC_mu;
   # real<lower = 0, upper = 2> lNEC_sigma;
   real<lower = 0, upper = pi()/2> lNEC_sigma_unif;
   real<lower = 0> m0;
@@ -68,9 +68,9 @@ model {
 
 
   lNEC_raw ~ normal(0, 1);
-  m0 ~ lognormal(0.5/log(10) * (log(m0_min) + log(m0_max)), 0.125/log(10) * (log(m0_max) - log(m0_min)));
-  ke ~ lognormal(0.5/log(10) * (log(ke_min) + log(ke_max)), 0.125/log(10) * (log(ke_max) - log(ke_min)));
-  ks ~ lognormal(0.5/log(10) * (log(ks_min) + log(ks_max)), 0.125/log(10) * (log(ks_max) - log(ks_min)));
+  m0 ~ normal(0.5 * (m0_min + m0_max), 0.25 * (m0_max - m0_min));
+  ke ~ normal(0.5 * (ke_min + ke_max), 0.25 * (ke_max - ke_min));
+  ks ~ lognormal(0.5 * (log10(ks_min) + log10(ks_max)), 0.25 * (log10(ks_max) - log10(ks_min)));
 
   y ~ binomial(Nprec,psurv);
 }
