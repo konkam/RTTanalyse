@@ -170,7 +170,7 @@ plot_NEC_with_prepared_dataset = function(fit, prepared_dataset){
 
 #' @export
 plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_data_hierarchical()){
-
+# This is with median parameters
   colmedians = function(x){
     if(is.null(dim(x))|length(dim(x))==1) median(x)
     else apply(X = x, MARGIN = 2, FUN = median)
@@ -181,14 +181,14 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
     else seq(from = min(x), to = max(x), length.out = npoints)
   }
 
+  # mcmctot = fit %>%
+  #   extract_params()
+  # m0__ = mcmctot %>%
+  #   lapply(FUN = colmedians) %>%
+  #   .$lm0 %>%
+  #   10**.
 
-
-  mcmctot = fit %>%
-    extract
-  m0__ = mcmctot %>%
-    lapply(FUN = colmedians) %>%
-    .$lm0 %>%
-    10**.
+  median_species_params = fit %>% get_median_species_params()
 
   if(vs=='c'){
 
@@ -199,17 +199,14 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
       log_conc = F
     }
 
-    p = mcmctot %>%
-      lapply(colmedians) %>%
-      (function(y){
-        data_for_fit$species %>%
-          unique %>%
-          lapply(FUN = function(xx){
-            filter = data_for_fit$species==xx
-            format_res(x = data_for_fit$x[filter] %>% fill_along(log_ = log_conc, npoints = 200), ks = 10**y$lks[xx], NEC = 10**y$lNEC[xx], ke = 10**y$lke[xx], m0_ = m0__[xx], t = data_for_fit$t[filter] %>% unique) %>%
+    p = data_for_fit$species %>%
+      unique %>%
+      lapply(FUN = function(xx){
+        filter = data_for_fit$species==xx
+        format_res(x = data_for_fit$x[filter] %>% fill_along(log_ = log_conc, npoints = 200), ks = median_species_params$ks[xx], NEC = median_species_params$NEC[xx],
+                   ke = median_species_params$ke[xx], m0_ = median_species_params$m0[xx], t = data_for_fit$t[filter] %>% unique) %>%
               mutate(species = data_for_fit$converter(xx))
-          })
-      }) %>%
+          }) %>%
       Reduce(rbind,.) %>%
       ggplot(aes(x = x, y = psurv, colour = t, group = t)) +
       geom_line() +
@@ -230,25 +227,21 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
   }
 
   else if(vs=='t'){
-    mcmctot %>%
-      lapply(colmedians) %>%
-      (function(y){
         data_for_fit$species %>%
           unique %>%
           lapply(FUN = function(xx){
             filter = data_for_fit$species==xx
             format_res(x = data_for_fit$x[filter] %>%
                          unique,
-                       ks = 10**y$lks[xx],
-                       NEC = 10**y$lNEC[xx],
-                       ke = 10**y$lke[xx],
-                       m0_ = m0__[xx],
+                       ks = median_species_params$ks[xx],
+                       NEC = median_species_params$NEC[xx],
+                       ke = median_species_params$ke[xx],
+                       m0_ = median_species_params$m0[xx],
                        t = data_for_fit$t[filter] %>%
                          c(0) %>%
                          fill_along(log_ = F, npoints = 300) ) %>%
               mutate(species = data_for_fit$converter(xx))
-          })
-      }) %>%
+          }) %>%
       Reduce(rbind,.) %>%
       ggplot(aes(x = t, y = psurv, colour = x, group = x)) +
       geom_line() +
@@ -264,19 +257,68 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
     }
 }
 
-extract_params = function(fit){
+#' @export
+# extract_params = function(fit){
+#     fit %>%
+#       rstan::extract() %>%
+#       as_tibble() %>%
+#       return()
+# }
+
+#' @export
+extract_params_jags = function(fit){
   if(is(fit) == "mcmc.list"){
-    fit %>% 
-      lapply(FUN = as_tibble) %>% 
-      bind_rows() %>% 
+    fit %>%
+      lapply(FUN = as_tibble) %>%
+      bind_rows() %>%
       return
   }
-  else{
-    fit %>%
-      extract() %>%
-      as_tibble() %>% 
-      return()
+  else if(is(fit) == "runjags"){
+    fit$mcmc %>%
+      lapply(FUN = as_tibble) %>%
+      bind_rows() %>%
+      return
   }
+  else stop("unrecognized object")
+}
+
+extract_species_param = function(fit, param_name){
+  if(is(fit) == "stanfit"){
+    fit %>%
+      rstan::extract() %>%
+      .[[param_name]] %>%
+      return
+  }
+  else if(is(fit) %in% c("runjags","mcmc.list")){
+    mcmctot = extract_params_jags(fit)
+
+    if (param_name %in% names(mcmctot)){
+      mcmctot[[param_name]] %>%
+        return
+    }
+    else {
+      res = mcmctot %>%
+      select(starts_with(paste(param_name, "[", sep='')))
+      if (ncol(res)==0) stop("wrong parameter name")
+      return(res)
+    }
+  }
+}
+
+get_median_species_params = function(fit){
+  lm0s = fit %>% extract_species_param("lm0") %>% colmedians()
+  lkss = fit %>% extract_species_param("lks") %>% colmedians()
+  lkes = fit %>% extract_species_param("lke") %>% colmedians()
+  lNECs = fit %>% extract_species_param("lNEC") %>% colmedians()
+
+  tmp = list("m0" = 10^lm0s, "ks" = 10^lkss, "ke" = 10^lkes, "NEC" = 10^lNECs)
+
+  nspecies = tmp %>% sapply(length) %>% max()
+
+  tmp %>%
+    lapply(FUN = function(x){if(length(x)==1){rep(x,nspecies)} else{x}}) %>%
+    setNames(names(tmp)) %>%
+    return()
 }
 
 plot_the_fit_one_species = function(fit, vs = 'c', data_for_fit){

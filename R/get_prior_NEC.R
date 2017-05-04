@@ -22,6 +22,7 @@ get_density = function(sample){
   tibble(xs = dens_$x, dens = dens_$y)
 }
 
+#' @export
 get_density_grid = function(sample, grid){
 
   ft = sample %>%
