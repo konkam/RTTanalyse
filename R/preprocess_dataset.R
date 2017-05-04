@@ -108,7 +108,8 @@ compute_effective_number_of_individuals = function(long_dataset){
     ungroup
 }
 
-convert_concentrations_to_numbers = function(df, col_conc){
+convert_concentrations_to_numbers = function(df_in, col_conc){
+  df = df_in
   df$concentration = df[, col_conc] %>%
     unlist()
   if (is.numeric(df$concentration)) return(df)

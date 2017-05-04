@@ -264,12 +264,24 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
     }
 }
 
+extract_params = function(fit){
+  if(is(fit) == "mcmc.list"){
+    fit %>% 
+      lapply(FUN = as_tibble) %>% 
+      bind_rows() %>% 
+      return
+  }
+  else{
+    fit %>%
+      extract() %>%
+      as_tibble() %>% 
+      return()
+  }
+}
+
 plot_the_fit_one_species = function(fit, vs = 'c', data_for_fit){
   median_params = fit %>%
-    # extract(parameters_names %>% paste("l",.,sep="")) %>%
-    extract() %>%
-    as_tibble() %>%
-    # Reduce(cbind,.) %>%
+    extract_params %>%
     colmedians() %>%
     (function(df){
       if( !("NEC" %in% names(df)) ) df %>% c("NEC" = 10**df[["lNEC"]])
