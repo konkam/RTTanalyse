@@ -3,6 +3,7 @@
 export(check_that_the_number_of_survivors_does_not_increase)
 export(find_closest_strings)
 export(fit_prepared_dataset)
+export(fit_prepared_dataset_jags)
 export(fit_prepared_dataset_uniform_priors)
 export(plot_NEC_with_prepared_dataset)
 export(plot_raw_data)

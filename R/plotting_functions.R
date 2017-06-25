@@ -33,20 +33,32 @@ plot_raw_data <- function(renamed_dataset, vs = "t"){
 
   else{
 
-      p <- renamed_dataset %>%
-        ggplot(aes(x = concentration,
-                   y = number_alive,
-                   colour = time %>% factor(),
-                   group = time %>% factor()))
-    p = p +
-      xlab("Concentration") +
-      ggthemes::scale_color_ptol(name = "Time")
+      if ( (renamed_dataset$time %>% unique() %>% length()) < 12 ){
+
+        p <- renamed_dataset %>%
+          ggplot(aes(x = concentration,
+                     y = number_alive,
+                     colour = time %>% factor(),
+                     group = time %>% factor())) +
+          ggthemes::scale_color_ptol(name = "Time")
+
+      }
+
+      else{
+        p <- renamed_dataset %>%
+          ggplot(aes(x = concentration,
+                     y = number_alive,
+                     colour = time %>% as.numeric(),
+                     group = time %>% factor())) +
+          scale_color_continuous(name = "Time")
+      }
+
+    p = p +  xlab("Concentration")
+
 
     if (min(renamed_dataset$concentration) > 0){
       p = p + scale_x_log10()
     }
-    #+
-      # scale_x_log10()
   }
 
   p +
@@ -171,8 +183,8 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
 
 
 
-  mcmctot = fit %>%
-    extract
+  mcmctot = rstan::extract(fit)
+
   m0__ = mcmctot %>%
     lapply(FUN = colmedians) %>%
     .$lm0 %>%
@@ -254,9 +266,27 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
 
 plot_the_fit_one_species = function(fit, vs = 'c', data_for_fit){
   median_params = fit %>%
-    extract(parameters_names %>% paste("l",.,sep="")) %>%
+    # extract(parameters_names %>% paste("l",.,sep="")) %>%
+    extract() %>%
     as_tibble() %>%
-    colmedians()
+    # Reduce(cbind,.) %>%
+    colmedians() %>%
+    (function(df){
+      if( !("NEC" %in% names(df)) ) df %>% c("NEC" = 10**df[["lNEC"]])
+      else df
+    }) %>%
+    (function(df){
+      if( !("m0" %in% names(df)) ) df %>% c("m0" = 10**df[["lm0"]])
+      else df
+    }) %>%
+    (function(df){
+      if( !("ke" %in% names(df)) ) df %>% c("ke" = 10**df[["lke"]])
+      else df
+    }) %>%
+    (function(df){
+      if( !("ks" %in% names(df)) ) df %>% c("ks" = 10**df[["lks"]])
+      else df
+    })
 
   if(vs=='c'){
 
@@ -266,7 +296,12 @@ plot_the_fit_one_species = function(fit, vs = 'c', data_for_fit){
     else{
       log_conc = F
     }
-    p = format_res(x = data_for_fit$x %>% fill_along(log_ = log_conc, npoints = 200), ks = 10**median_params["lks"], NEC = 10**median_params["lNEC"], ke = 10**median_params["lke"], m0_ = 10**median_params["lm0"], t = data_for_fit$t %>% unique) %>%
+    p = format_res(x = data_for_fit$x %>% fill_along(log_ = log_conc, npoints = 200),
+                   ks = median_params["ks"],
+                   NEC = median_params["NEC"],
+                   ke = median_params["ke"],
+                   m0_ = median_params["m0"],
+                   t = data_for_fit$t %>% unique) %>%
       ggplot(aes(x = x, y = psurv, colour = t, group = t)) +
       geom_line() +
       geom_point(data = data.frame(data_for_fit[c('x','y','Neff','t', 'species')]), mapping = aes(x = x, y = y/Neff)) +
@@ -283,10 +318,10 @@ plot_the_fit_one_species = function(fit, vs = 'c', data_for_fit){
 
   else if(vs=='t'){
     format_res(x = data_for_fit$x %>% unique(),
-               ks = 10**median_params["lks"],
-               NEC = 10**median_params["lNEC"],
-               ke = 10**median_params["lke"],
-               m0_ = 10**median_params["lm0"],
+               ks = median_params["ks"],
+               NEC = median_params["NEC"],
+               ke = median_params["ke"],
+               m0_ = median_params["m0"],
                t = data_for_fit$t %>%
                  c(0)%>%
                  fill_along(log_ = F, npoints = 300)
