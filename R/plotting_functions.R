@@ -88,7 +88,7 @@ plot_raw_dataset = function(raw_wide_dataset, concentration_col, species_col, ti
 dhalf_Cauchy = function(x, mu, sigma){2/(pi*sigma*(1+((x-mu)/sigma)**2))}
 
 #' @export
-prior_posterior_plot_with_prepared_dataset = function(fit, prepared_dataset){
+prior_posterior_plot_with_prepared_dataset = function(fit, prepared_dataset, restrict_to_hpd = FALSE){
 
   watch_params = c('lks_mu','lks_sigma','lNEC_mu','lNEC_sigma','lke_mu','lke_sigma','lm0_mu','lm0_sigma')
 
@@ -112,8 +112,17 @@ prior_posterior_plot_with_prepared_dataset = function(fit, prepared_dataset){
   ) %>%
     bind_rows()
 
-  posterior = extract(fit, pars = watch_params) %>% as_tibble() %>%
+  # posterior = extract(fit, pars = watch_params) %>% as_tibble() %>%
+  posterior = extract_hierarchical_params(fit) %>%
     gather(param, value)
+
+  if(restrict_to_hpd) {
+    posterior = posterior %>%
+      group_by(param) %>%
+      do(restrict_to_HPD(.$value) %>% as_tibble()) %>%
+      ungroup()# seems useless, but does not display on markdown notebook otherwise
+    }
+
 
   posterior %>%
     ggplot(aes(x = value, y = ..density..)) +
@@ -124,14 +133,19 @@ prior_posterior_plot_with_prepared_dataset = function(fit, prepared_dataset){
 }
 
 #' @export
-plot_NEC_with_prepared_dataset = function(fit, prepared_dataset){
+plot_NEC_with_prepared_dataset = function(fit, prepared_dataset, restrict_to_hpd = FALSE, mass = 0.95){
 
-  posterior = extract(fit, pars = "lNEC") %>%
-    .[[1]] %>%
-    as_tibble() %>%
+  posterior = extract_species_param(fit, "lNEC") %>%
     setNames(seq(ncol(.)) %>%
                prepared_dataset$converter()) %>%
     gather(species, value)
+
+  if(restrict_to_hpd) {
+    posterior = posterior %>%
+      group_by(species) %>%
+      do(restrict_to_HPD(.$value, conf = mass) %>% as_tibble()) %>%
+      ungroup()# seems useless, but does not display on markdown notebook otherwise
+  }
 
   posterior %>%
     split(factor(.$species)) %>%
@@ -258,14 +272,6 @@ plot_the_fit_hierarchical = function(fit, vs = 'c', data_for_fit = prepare_the_d
 }
 
 #' @export
-# extract_params = function(fit){
-#     fit %>%
-#       rstan::extract() %>%
-#       as_tibble() %>%
-#       return()
-# }
-
-#' @export
 extract_params_jags = function(fit){
   if(is(fit) == "mcmc.list"){
     fit %>%
@@ -303,6 +309,16 @@ extract_species_param = function(fit, param_name){
       return(res)
     }
   }
+}
+
+extract_hierarchical_params = function(fit){
+  c("lNEC_mu", "lNEC_sigma","lke_mu", "lke_sigma","lks_mu", "lks_sigma","lm0_mu", "lm0_sigma") %>%
+    (function(parnames_list){
+      lapply(parnames_list, function(parname) extract_species_param(fit, parname)) %>%
+        # Reduce(cbind,.) %>%
+        setNames(parnames_list) %>%
+        as_tibble()
+    })
 }
 
 get_median_species_params = function(fit){
@@ -391,4 +407,10 @@ plot_the_fit_one_species = function(fit, vs = 'c', data_for_fit){
       ggthemes::theme_few()
   }
 
+}
+
+
+restrict_to_HPD = function(mcmc_sample, conf = 0.95){
+  bounds = TeachingDemos::emp.hpd(mcmc_sample, conf = conf)
+  return(mcmc_sample[mcmc_sample>bounds[1]&mcmc_sample<bounds[2]])
 }
