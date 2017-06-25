@@ -6,6 +6,7 @@ rpi_sigma = function(n){
   rcauchy(n = n, location = 0, scale = .5) %>% abs
 }
 
+#' @export
 rpi_lNEC = function(n, dat){
   rnorm(n = n, mean = rpi_mu(n = n, dat = dat), sd = rpi_sigma(n = n))
 }
@@ -21,6 +22,7 @@ get_density = function(sample){
   tibble(xs = dens_$x, dens = dens_$y)
 }
 
+#' @export
 get_density_grid = function(sample, grid){
 
   ft = sample %>%

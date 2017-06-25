@@ -5,7 +5,6 @@ prepare_dat = function(preprocessed_dataset){
     (function(df){
       maxc = max(df$concentration)
       minc = min(df$concentration[df$concentration>0])#this can cause pb with the priors otherwise
-      maxt = max(df$time)
       df %>%
         (function(x){
 
@@ -26,7 +25,7 @@ prepare_dat = function(preprocessed_dataset){
                 'Neff' = x$effective_number,
                 'maxc' = maxc,
                 'minc' = minc,
-                'maxt' = maxt,
+                'maxt' = max(x$time),
                 'ndat' = length(x$concentration),
                 'lNEC_prior_factor' = 3,
                 'converter' = converter_function,

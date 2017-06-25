@@ -108,13 +108,18 @@ compute_effective_number_of_individuals = function(long_dataset){
     ungroup
 }
 
-convert_concentrations_to_numbers = function(df, col_conc){
+convert_concentrations_to_numbers = function(df_in, col_conc){
+  df = df_in
   df$concentration = df[, col_conc] %>%
-    unlist() %>%
+    unlist()
+  if (is.numeric(df$concentration)) return(df)
+  else{
+    df$concentration = df$concentration %>%
     stringr::str_extract("\\(?[0-9,.]+\\)?") %>%
     as.numeric() %>%
     ifelse(test = is.na(.), yes = 0, no = .)#Change this when the value of the control is given
-  df
+  return(df)
+    }
 }
 
 
