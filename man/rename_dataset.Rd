@@ -4,8 +4,15 @@
 \alias{rename_dataset}
 \title{Specify which are the interesting column of a dataset and rename them for standardized use.}
 \usage{
-rename_dataset(dataset, concentration_col_name, time_col_name, n_alive_col_name,
-  species_identifier_col_name, test_id_col_name = NULL, keep_only = FALSE)
+rename_dataset(
+  dataset,
+  concentration_col_name,
+  time_col_name,
+  n_alive_col_name,
+  species_identifier_col_name,
+  test_id_col_name = NULL,
+  keep_only = FALSE
+)
 }
 \arguments{
 \item{dataset}{The loaded dataset. Must contain only one contaminant.}

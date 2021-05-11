@@ -4,8 +4,11 @@
 \alias{check_that_the_number_of_survivors_does_not_increase}
 \title{Check that the number of survivors does not increase}
 \usage{
-check_that_the_number_of_survivors_does_not_increase(raw_wide_dataset,
-  time_col_names, time_stamps)
+check_that_the_number_of_survivors_does_not_increase(
+  raw_wide_dataset,
+  time_col_names,
+  time_stamps
+)
 }
 \arguments{
 \item{raw_wide_dataset}{The loaded dataset.}

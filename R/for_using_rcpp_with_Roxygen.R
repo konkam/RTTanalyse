@@ -1,3 +1,3 @@
-#' @useDynLib RTTanalyse, .registration = TRUE
-#' @importFrom Rcpp sourceCpp
-NULL
+#' #' @useDynLib RTTanalyse, .registration = TRUE
+#' #' @importFrom Rcpp sourceCpp
+#' NULL

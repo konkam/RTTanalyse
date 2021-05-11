@@ -4,8 +4,11 @@
 \alias{get_rows_where_the_number_of_survivors_increases}
 \title{Get the rows where the number of survivors increases}
 \usage{
-get_rows_where_the_number_of_survivors_increases(raw_wide_dataset, time_columns,
-  time_stamps)
+get_rows_where_the_number_of_survivors_increases(
+  raw_wide_dataset,
+  time_columns,
+  time_stamps
+)
 }
 \arguments{
 \item{raw_wide_dataset}{The loaded dataset.}
